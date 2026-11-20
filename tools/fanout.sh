@@ -7,7 +7,9 @@ set -euo pipefail
 repo="$1"
 engine="${ENGINE:-copilot}"
 components=$(python3 -c 'import json;print(" ".join(json.load(open("codebase-analysis/plan.json"))["components"]))')
+gh label create "agent:claude" -R "$repo" --color 7057ff --force >/dev/null
 for c in $components; do
+  gh label create "component:$c" -R "$repo" --color 1d76db --force >/dev/null
   body=$(cat <<BODY
 Use the \`component-analysis\` skill in \`.github/skills/component-analysis/SKILL.md\`.
 
