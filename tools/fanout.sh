@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # Controller, Phase 1: one issue per component in plan.json, assigned to Copilot.
-# usage: tools/fanout.sh <owner/repo>
+# usage: ENGINE=copilot|claude tools/fanout.sh <owner/repo>
+#   copilot: assign the issue to the Copilot coding agent (target setup).
+#   claude:  label it agent:claude for the local stand-in harness (POC).
 set -euo pipefail
 repo="$1"
+engine="${ENGINE:-copilot}"
 components=$(python3 -c 'import json;print(" ".join(json.load(open("codebase-analysis/plan.json"))["components"]))')
 for c in $components; do
   body=$(cat <<BODY
@@ -16,5 +19,11 @@ Later passes will come as \`@copilot\` comments on the PR you open. Keep all pas
 this component on that one PR. Apply the stop-and-ask rule in the skill if you are blocked.
 BODY
 )
-  gh issue create -R "$repo" --title "Analyze component: $c" --body "$body" --assignee "@copilot"
+  case "$engine" in
+    copilot) gh issue create -R "$repo" --title "Analyze component: $c" --body "$body" \
+               --label "component:$c" --assignee "@copilot" ;;
+    claude)  gh issue create -R "$repo" --title "Analyze component: $c" \
+               --body "${body//@copilot/@claude}" --label "component:$c" --label "agent:claude" ;;
+    *) echo "unknown ENGINE $engine" >&2; exit 2 ;;
+  esac
 done
