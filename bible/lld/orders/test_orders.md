@@ -103,3 +103,7 @@ The `if __name__ == "__main__"` block runs `unittest.main()` (`components/orders
 ## Surprises
 
 None found.
+
+<!-- cites components/catalog/catalog.py@1e15fdaab1fa3c720d99a864abb4cac9c8259421 -->
+
+<!-- cites components/orders/test_orders.py@ca9144cf39abe39e988dc009863b036a7ee1a39f -->

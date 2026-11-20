@@ -364,3 +364,11 @@ Runs at import: the imports (`gate.py:13-18`) and `ROOT = pathlib.Path(__file__)
 - `--pass N` skips `status.json`, so the open-question block applies only to the run without `--pass` (`tools/gate.py:91-92`, `tools/gate.py:104-108`).
 - The pass 3 check runs the whole repository's test suite from inside the gate (`tools/gate.py:73-75`).
 - The ASK failure message tells the reader to wait for an answer in `decisions.md` (`tools/gate.py:60`), but the gate never reads that file; it re-reads only `risks.md` (search `decisions` in `*.py` and `*.sh` under `components` and `tools`: 1 hit, `tools/gate.py:60`).
+
+<!-- cites components/catalog/catalog.py@1e15fdaab1fa3c720d99a864abb4cac9c8259421 -->
+
+<!-- cites tools/fanout.sh@9ad43aa70e042837954fea1faf483f6c08e07470 -->
+
+<!-- cites tools/gate.py@65eb0af527e554cfb2dadb9d0c8cd1ee6e975c99 -->
+
+<!-- cites tools/plan.py@e1dae33df7990fe69b145146d570403758d0635e -->

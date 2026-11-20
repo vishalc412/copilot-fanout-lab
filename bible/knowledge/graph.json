@@ -1,0 +1,1731 @@
+{
+ "generated": "2026-11-21T03:03:09",
+ "tool": "analyzing-a-codebase/scripts/knowledge.py 1.5.0",
+ "stats": {
+  "nodes": 87,
+  "edges": 144,
+  "chunks": 218,
+  "calls_unresolved": 1,
+  "by_node_type": {
+   "File": 21,
+   "Function": 17,
+   "Class": 2,
+   "Method": 2,
+   "Page": 27,
+   "Component": 3,
+   "Store": 1,
+   "Config": 8,
+   "External": 3,
+   "Job": 3
+  },
+  "by_edge_type": {
+   "DEFINES": 21,
+   "CALLS": 26,
+   "IMPORTS": 4,
+   "HAS_PAGE": 10,
+   "DOCUMENTS": 14,
+   "CONTAINS": 7,
+   "READS": 30,
+   "WRITES": 6,
+   "CONFIG": 16,
+   "USES": 4,
+   "DEPENDS_ON": 3,
+   "EXPOSES": 3
+  },
+  "by_resolution": {
+   "exact": 39,
+   "same-file": 9,
+   "import": 5,
+   "analysis": 91
+  }
+ },
+ "nodes": [
+  {
+   "id": "component:catalog",
+   "type": "Component",
+   "name": "catalog"
+  },
+  {
+   "id": "component:orders",
+   "type": "Component",
+   "name": "orders"
+  },
+  {
+   "id": "component:tools",
+   "type": "Component",
+   "name": "tools"
+  },
+  {
+   "id": "config:BULK_DISCOUNT",
+   "type": "Config",
+   "name": "BULK_DISCOUNT"
+  },
+  {
+   "id": "config:BULK_THRESHOLD",
+   "type": "Config",
+   "name": "BULK_THRESHOLD"
+  },
+  {
+   "id": "config:DEV_SETTLE_URL",
+   "type": "Config",
+   "name": "DEV_SETTLE_URL"
+  },
+  {
+   "id": "config:ENGINE",
+   "type": "Config",
+   "name": "ENGINE"
+  },
+  {
+   "id": "config:IMAGE_CDN",
+   "type": "Config",
+   "name": "IMAGE_CDN"
+  },
+  {
+   "id": "config:LOYALTY_DISCOUNT",
+   "type": "Config",
+   "name": "LOYALTY_DISCOUNT"
+  },
+  {
+   "id": "config:PARTNER_SETTLE_URL",
+   "type": "Config",
+   "name": "PARTNER_SETTLE_URL"
+  },
+  {
+   "id": "config:SUPPLIER_FEED_URL",
+   "type": "Config",
+   "name": "SUPPLIER_FEED_URL"
+  },
+  {
+   "id": "external:GitHub",
+   "type": "External",
+   "name": "GitHub"
+  },
+  {
+   "id": "external:Payment partner settlement endpoint",
+   "type": "External",
+   "name": "Payment partner settlement endpoint"
+  },
+  {
+   "id": "external:Supplier product feed",
+   "type": "External",
+   "name": "Supplier product feed"
+  },
+  {
+   "id": "file:.agent/PROMPT.md",
+   "type": "File",
+   "name": "PROMPT.md",
+   "path": ".agent/PROMPT.md",
+   "kind": "doc",
+   "lang": "",
+   "lines": 59
+  },
+  {
+   "id": "file:.git",
+   "type": "File",
+   "name": ".git",
+   "path": ".git",
+   "kind": "other",
+   "lang": "",
+   "lines": 1
+  },
+  {
+   "id": "file:.gitignore",
+   "type": "File",
+   "name": ".gitignore",
+   "path": ".gitignore",
+   "kind": "other",
+   "lang": "",
+   "lines": 3
+  },
+  {
+   "id": "file:README.md",
+   "type": "File",
+   "name": "README.md",
+   "path": "README.md",
+   "kind": "doc",
+   "lang": "",
+   "lines": 13
+  },
+  {
+   "id": "file:codebase-analysis/components/*/inventory.md",
+   "type": "File",
+   "name": "codebase-analysis/components/*/inventory.md"
+  },
+  {
+   "id": "file:codebase-analysis/components/*/risks.md",
+   "type": "File",
+   "name": "codebase-analysis/components/*/risks.md"
+  },
+  {
+   "id": "file:codebase-analysis/components/*/status.json",
+   "type": "File",
+   "name": "codebase-analysis/components/*/status.json"
+  },
+  {
+   "id": "file:codebase-analysis/components/*/tests-report.md",
+   "type": "File",
+   "name": "codebase-analysis/components/*/tests-report.md"
+  },
+  {
+   "id": "file:codebase-analysis/plan.json",
+   "type": "File",
+   "name": "codebase-analysis/plan.json"
+  },
+  {
+   "id": "file:components/*/*.py",
+   "type": "File",
+   "name": "components/*/*.py"
+  },
+  {
+   "id": "file:components/*/test_*.py",
+   "type": "File",
+   "name": "components/*/test_*.py"
+  },
+  {
+   "id": "file:components/__init__.py",
+   "type": "File",
+   "name": "__init__.py",
+   "path": "components/__init__.py",
+   "kind": "source",
+   "lang": "python",
+   "lines": 0
+  },
+  {
+   "id": "file:components/catalog/__init__.py",
+   "type": "File",
+   "name": "__init__.py",
+   "path": "components/catalog/__init__.py",
+   "kind": "source",
+   "lang": "python",
+   "lines": 0
+  },
+  {
+   "id": "file:components/catalog/catalog.py",
+   "type": "File",
+   "name": "catalog.py",
+   "path": "components/catalog/catalog.py",
+   "kind": "source",
+   "lang": "python",
+   "lines": 47
+  },
+  {
+   "id": "file:components/catalog/test_catalog.py",
+   "type": "File",
+   "name": "test_catalog.py",
+   "path": "components/catalog/test_catalog.py",
+   "kind": "source",
+   "lang": "python",
+   "lines": 12
+  },
+  {
+   "id": "file:components/orders/__init__.py",
+   "type": "File",
+   "name": "__init__.py",
+   "path": "components/orders/__init__.py",
+   "kind": "source",
+   "lang": "python",
+   "lines": 0
+  },
+  {
+   "id": "file:components/orders/orders.py",
+   "type": "File",
+   "name": "orders.py",
+   "path": "components/orders/orders.py",
+   "kind": "source",
+   "lang": "python",
+   "lines": 51
+  },
+  {
+   "id": "file:components/orders/test_orders.py",
+   "type": "File",
+   "name": "test_orders.py",
+   "path": "components/orders/test_orders.py",
+   "kind": "source",
+   "lang": "python",
+   "lines": 12
+  },
+  {
+   "id": "file:tools/fanout.sh",
+   "type": "File",
+   "name": "fanout.sh",
+   "path": "tools/fanout.sh",
+   "kind": "source",
+   "lang": "shell",
+   "lines": 31
+  },
+  {
+   "id": "file:tools/gate.py",
+   "type": "File",
+   "name": "gate.py",
+   "path": "tools/gate.py",
+   "kind": "source",
+   "lang": "python",
+   "lines": 117
+  },
+  {
+   "id": "file:tools/plan.py",
+   "type": "File",
+   "name": "plan.py",
+   "path": "tools/plan.py",
+   "kind": "source",
+   "lang": "python",
+   "lines": 62
+  },
+  {
+   "id": "job:python tools/gate.py",
+   "type": "Job",
+   "name": "python tools/gate.py"
+  },
+  {
+   "id": "job:python tools/plan.py",
+   "type": "Job",
+   "name": "python tools/plan.py"
+  },
+  {
+   "id": "job:tools/fanout.sh",
+   "type": "Job",
+   "name": "tools/fanout.sh"
+  },
+  {
+   "id": "page:00-mind-map.md",
+   "type": "Page",
+   "name": "00-mind-map.md",
+   "path": "00-mind-map.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:README.md",
+   "type": "Page",
+   "name": "README.md",
+   "path": "README.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:hld/01-system-context.md",
+   "type": "Page",
+   "name": "hld/01-system-context.md",
+   "path": "hld/01-system-context.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:hld/02-architecture.md",
+   "type": "Page",
+   "name": "hld/02-architecture.md",
+   "path": "hld/02-architecture.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:hld/03-integrations.md",
+   "type": "Page",
+   "name": "hld/03-integrations.md",
+   "path": "hld/03-integrations.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:hld/04-data-architecture.md",
+   "type": "Page",
+   "name": "hld/04-data-architecture.md",
+   "path": "hld/04-data-architecture.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:hld/05-key-flows.md",
+   "type": "Page",
+   "name": "hld/05-key-flows.md",
+   "path": "hld/05-key-flows.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:hld/06-cross-cutting.md",
+   "type": "Page",
+   "name": "hld/06-cross-cutting.md",
+   "path": "hld/06-cross-cutting.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:knowledge/AGENT-CONTEXT.md",
+   "type": "Page",
+   "name": "knowledge/AGENT-CONTEXT.md",
+   "path": "knowledge/AGENT-CONTEXT.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:ledger/coverage-ledger.md",
+   "type": "Page",
+   "name": "ledger/coverage-ledger.md",
+   "path": "ledger/coverage-ledger.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:lld/catalog/README.md",
+   "type": "Page",
+   "name": "lld/catalog/README.md",
+   "path": "lld/catalog/README.md",
+   "kind": "component",
+   "summary": "In-memory product table with price, stock and image lookups and a supplier feed fetcher and updater"
+  },
+  {
+   "id": "page:lld/catalog/catalog.md",
+   "type": "Page",
+   "name": "lld/catalog/catalog.md",
+   "path": "lld/catalog/catalog.md",
+   "kind": "module",
+   "summary": "In-memory product table with price, stock and image URL lookups, plus a supplier feed fetcher and updater"
+  },
+  {
+   "id": "page:lld/catalog/test_catalog.md",
+   "type": "Page",
+   "name": "lld/catalog/test_catalog.md",
+   "path": "lld/catalog/test_catalog.md",
+   "kind": "module",
+   "summary": "One unittest checking the price of SKU-1 in the catalog"
+  },
+  {
+   "id": "page:lld/data-dictionary.md",
+   "type": "Page",
+   "name": "lld/data-dictionary.md",
+   "path": "lld/data-dictionary.md",
+   "kind": "data-dictionary",
+   "summary": "The one in-memory product table, the plan.json inventory and the analysis files the gate reads"
+  },
+  {
+   "id": "page:lld/orders/README.md",
+   "type": "Page",
+   "name": "lld/orders/README.md",
+   "path": "lld/orders/README.md",
+   "kind": "component",
+   "summary": "Prices an order with one discount, validates its lines against catalog stock and posts a settled order to the payment partner"
+  },
+  {
+   "id": "page:lld/orders/orders.md",
+   "type": "Page",
+   "name": "lld/orders/orders.md",
+   "path": "lld/orders/orders.md",
+   "kind": "module",
+   "summary": "Prices an order with discounts, validates its lines against stock and posts it to the payment partner"
+  },
+  {
+   "id": "page:lld/orders/test_orders.md",
+   "type": "Page",
+   "name": "lld/orders/test_orders.md",
+   "path": "lld/orders/test_orders.md",
+   "kind": "module",
+   "summary": "One unittest checking the line total of two Mugs"
+  },
+  {
+   "id": "page:lld/tools/README.md",
+   "type": "Page",
+   "name": "lld/tools/README.md",
+   "path": "lld/tools/README.md",
+   "kind": "component",
+   "summary": "Three command-line scripts that plan the component fan-out, open one issue per component and gate each component's analysis files"
+  },
+  {
+   "id": "page:lld/tools/fanout.md",
+   "type": "Page",
+   "name": "lld/tools/fanout.md",
+   "path": "lld/tools/fanout.md",
+   "kind": "module",
+   "summary": "Controller script that creates one GitHub issue per component in plan.json, assigned to Copilot or labelled for the local Claude stand-in"
+  },
+  {
+   "id": "page:lld/tools/gate.md",
+   "type": "Page",
+   "name": "lld/tools/gate.md",
+   "path": "lld/tools/gate.md",
+   "kind": "module",
+   "summary": "Per-component command-line gate that checks the pass 1, 2 and 3 output files of the component analysis against plan.json"
+  },
+  {
+   "id": "page:lld/tools/plan.md",
+   "type": "Page",
+   "name": "lld/tools/plan.md",
+   "path": "lld/tools/plan.md",
+   "kind": "module",
+   "summary": "Deterministic step 0 that scans components/ and writes codebase-analysis/plan.json with functions, tests and http:// literals per component"
+  },
+  {
+   "id": "page:progress.md",
+   "type": "Page",
+   "name": "progress.md",
+   "path": "progress.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:reference/configuration.md",
+   "type": "Page",
+   "name": "reference/configuration.md",
+   "path": "reference/configuration.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:reference/glossary.md",
+   "type": "Page",
+   "name": "reference/glossary.md",
+   "path": "reference/glossary.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:reference/open-questions.md",
+   "type": "Page",
+   "name": "reference/open-questions.md",
+   "path": "reference/open-questions.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:reference/risks-and-surprises.md",
+   "type": "Page",
+   "name": "reference/risks-and-surprises.md",
+   "path": "reference/risks-and-surprises.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:run-notes.md",
+   "type": "Page",
+   "name": "run-notes.md",
+   "path": "run-notes.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "store:_PRODUCTS",
+   "type": "Store",
+   "name": "_PRODUCTS"
+  },
+  {
+   "id": "symbol:components/catalog/catalog.py#apply_feed",
+   "type": "Function",
+   "name": "apply_feed",
+   "path": "components/catalog/catalog.py",
+   "start": 42,
+   "end": 47,
+   "branches": 2,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/catalog/catalog.py#fetch_supplier_feed",
+   "type": "Function",
+   "name": "fetch_supplier_feed",
+   "path": "components/catalog/catalog.py",
+   "start": 36,
+   "end": 39,
+   "branches": 0,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/catalog/catalog.py#get_product",
+   "type": "Function",
+   "name": "get_product",
+   "path": "components/catalog/catalog.py",
+   "start": 15,
+   "end": 17,
+   "branches": 0,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/catalog/catalog.py#image_url",
+   "type": "Function",
+   "name": "image_url",
+   "path": "components/catalog/catalog.py",
+   "start": 32,
+   "end": 33,
+   "branches": 0,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/catalog/catalog.py#in_stock",
+   "type": "Function",
+   "name": "in_stock",
+   "path": "components/catalog/catalog.py",
+   "start": 27,
+   "end": 29,
+   "branches": 0,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/catalog/catalog.py#price_of",
+   "type": "Function",
+   "name": "price_of",
+   "path": "components/catalog/catalog.py",
+   "start": 20,
+   "end": 24,
+   "branches": 2,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/catalog/test_catalog.py#CatalogTest",
+   "type": "Class",
+   "name": "CatalogTest",
+   "path": "components/catalog/test_catalog.py",
+   "start": 6,
+   "end": 8,
+   "branches": 0,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/catalog/test_catalog.py#CatalogTest.test_price_of_known_sku",
+   "type": "Method",
+   "name": "CatalogTest.test_price_of_known_sku",
+   "path": "components/catalog/test_catalog.py",
+   "start": 7,
+   "end": 8,
+   "branches": 0,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/orders/orders.py#line_total",
+   "type": "Function",
+   "name": "line_total",
+   "path": "components/orders/orders.py",
+   "start": 19,
+   "end": 20,
+   "branches": 0,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/orders/orders.py#order_total",
+   "type": "Function",
+   "name": "order_total",
+   "path": "components/orders/orders.py",
+   "start": 23,
+   "end": 32,
+   "branches": 2,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/orders/orders.py#settle",
+   "type": "Function",
+   "name": "settle",
+   "path": "components/orders/orders.py",
+   "start": 45,
+   "end": 51,
+   "branches": 1,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/orders/orders.py#validate",
+   "type": "Function",
+   "name": "validate",
+   "path": "components/orders/orders.py",
+   "start": 35,
+   "end": 42,
+   "branches": 3,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/orders/test_orders.py#OrdersTest",
+   "type": "Class",
+   "name": "OrdersTest",
+   "path": "components/orders/test_orders.py",
+   "start": 6,
+   "end": 8,
+   "branches": 0,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:components/orders/test_orders.py#OrdersTest.test_line_total",
+   "type": "Method",
+   "name": "OrdersTest.test_line_total",
+   "path": "components/orders/test_orders.py",
+   "start": 7,
+   "end": 8,
+   "branches": 0,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:tools/gate.py#check",
+   "type": "Function",
+   "name": "check",
+   "path": "tools/gate.py",
+   "start": 42,
+   "end": 78,
+   "branches": 13,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:tools/gate.py#count_tests",
+   "type": "Function",
+   "name": "count_tests",
+   "path": "tools/gate.py",
+   "start": 33,
+   "end": 39,
+   "branches": 3,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:tools/gate.py#fail",
+   "type": "Function",
+   "name": "fail",
+   "path": "tools/gate.py",
+   "start": 23,
+   "end": 26,
+   "branches": 2,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:tools/gate.py#main",
+   "type": "Function",
+   "name": "main",
+   "path": "tools/gate.py",
+   "start": 81,
+   "end": 113,
+   "branches": 10,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:tools/gate.py#read",
+   "type": "Function",
+   "name": "read",
+   "path": "tools/gate.py",
+   "start": 29,
+   "end": 30,
+   "branches": 1,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:tools/plan.py#main",
+   "type": "Function",
+   "name": "main",
+   "path": "tools/plan.py",
+   "start": 41,
+   "end": 58,
+   "branches": 2,
+   "lang": "python"
+  },
+  {
+   "id": "symbol:tools/plan.py#scan",
+   "type": "Function",
+   "name": "scan",
+   "path": "tools/plan.py",
+   "start": 21,
+   "end": 38,
+   "branches": 8,
+   "lang": "python"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "symbol:components/catalog/catalog.py#get_product",
+   "type": "DEFINES",
+   "evidence": "components/catalog/catalog.py:15",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "symbol:components/catalog/catalog.py#price_of",
+   "type": "DEFINES",
+   "evidence": "components/catalog/catalog.py:20",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "symbol:components/catalog/catalog.py#in_stock",
+   "type": "DEFINES",
+   "evidence": "components/catalog/catalog.py:27",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "symbol:components/catalog/catalog.py#image_url",
+   "type": "DEFINES",
+   "evidence": "components/catalog/catalog.py:32",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "symbol:components/catalog/catalog.py#fetch_supplier_feed",
+   "type": "DEFINES",
+   "evidence": "components/catalog/catalog.py:36",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "symbol:components/catalog/catalog.py#apply_feed",
+   "type": "DEFINES",
+   "evidence": "components/catalog/catalog.py:42",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/catalog/test_catalog.py",
+   "target": "symbol:components/catalog/test_catalog.py#CatalogTest",
+   "type": "DEFINES",
+   "evidence": "components/catalog/test_catalog.py:6",
+   "resolution": "exact"
+  },
+  {
+   "source": "symbol:components/catalog/test_catalog.py#CatalogTest",
+   "target": "symbol:components/catalog/test_catalog.py#CatalogTest.test_price_of_known_sku",
+   "type": "DEFINES",
+   "evidence": "components/catalog/test_catalog.py:7",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "symbol:components/orders/orders.py#line_total",
+   "type": "DEFINES",
+   "evidence": "components/orders/orders.py:19",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "symbol:components/orders/orders.py#order_total",
+   "type": "DEFINES",
+   "evidence": "components/orders/orders.py:23",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "symbol:components/orders/orders.py#validate",
+   "type": "DEFINES",
+   "evidence": "components/orders/orders.py:35",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "symbol:components/orders/orders.py#settle",
+   "type": "DEFINES",
+   "evidence": "components/orders/orders.py:45",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/orders/test_orders.py",
+   "target": "symbol:components/orders/test_orders.py#OrdersTest",
+   "type": "DEFINES",
+   "evidence": "components/orders/test_orders.py:6",
+   "resolution": "exact"
+  },
+  {
+   "source": "symbol:components/orders/test_orders.py#OrdersTest",
+   "target": "symbol:components/orders/test_orders.py#OrdersTest.test_line_total",
+   "type": "DEFINES",
+   "evidence": "components/orders/test_orders.py:7",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "symbol:tools/gate.py#fail",
+   "type": "DEFINES",
+   "evidence": "tools/gate.py:23",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "symbol:tools/gate.py#read",
+   "type": "DEFINES",
+   "evidence": "tools/gate.py:29",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "symbol:tools/gate.py#count_tests",
+   "type": "DEFINES",
+   "evidence": "tools/gate.py:33",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "symbol:tools/gate.py#check",
+   "type": "DEFINES",
+   "evidence": "tools/gate.py:42",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "symbol:tools/gate.py#main",
+   "type": "DEFINES",
+   "evidence": "tools/gate.py:81",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:tools/plan.py",
+   "target": "symbol:tools/plan.py#scan",
+   "type": "DEFINES",
+   "evidence": "tools/plan.py:21",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:tools/plan.py",
+   "target": "symbol:tools/plan.py#main",
+   "type": "DEFINES",
+   "evidence": "tools/plan.py:41",
+   "resolution": "exact"
+  },
+  {
+   "source": "symbol:components/catalog/catalog.py#price_of",
+   "target": "symbol:components/catalog/catalog.py#get_product",
+   "type": "CALLS",
+   "evidence": "components/catalog/catalog.py:21",
+   "resolution": "same-file"
+  },
+  {
+   "source": "symbol:components/catalog/catalog.py#in_stock",
+   "target": "symbol:components/catalog/catalog.py#get_product",
+   "type": "CALLS",
+   "evidence": "components/catalog/catalog.py:28",
+   "resolution": "same-file"
+  },
+  {
+   "source": "file:components/catalog/test_catalog.py",
+   "target": "file:components/catalog/__init__.py",
+   "type": "IMPORTS",
+   "evidence": "components/catalog/test_catalog.py:3",
+   "resolution": "exact"
+  },
+  {
+   "source": "symbol:components/catalog/test_catalog.py#CatalogTest.test_price_of_known_sku",
+   "target": "symbol:components/catalog/catalog.py#price_of",
+   "type": "CALLS",
+   "evidence": "components/catalog/test_catalog.py:8",
+   "resolution": "import"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "file:components/catalog/__init__.py",
+   "type": "IMPORTS",
+   "evidence": "components/orders/orders.py:5",
+   "resolution": "exact"
+  },
+  {
+   "source": "symbol:components/orders/orders.py#line_total",
+   "target": "symbol:components/catalog/catalog.py#price_of",
+   "type": "CALLS",
+   "evidence": "components/orders/orders.py:20",
+   "resolution": "import"
+  },
+  {
+   "source": "symbol:components/orders/orders.py#order_total",
+   "target": "symbol:components/orders/orders.py#line_total",
+   "type": "CALLS",
+   "evidence": "components/orders/orders.py:25",
+   "resolution": "same-file"
+  },
+  {
+   "source": "symbol:components/orders/orders.py#validate",
+   "target": "symbol:components/catalog/catalog.py#in_stock",
+   "type": "CALLS",
+   "evidence": "components/orders/orders.py:40",
+   "resolution": "import"
+  },
+  {
+   "source": "file:components/orders/test_orders.py",
+   "target": "file:components/orders/__init__.py",
+   "type": "IMPORTS",
+   "evidence": "components/orders/test_orders.py:3",
+   "resolution": "exact"
+  },
+  {
+   "source": "symbol:components/orders/test_orders.py#OrdersTest.test_line_total",
+   "target": "symbol:components/orders/orders.py#line_total",
+   "type": "CALLS",
+   "evidence": "components/orders/test_orders.py:8",
+   "resolution": "import"
+  },
+  {
+   "source": "symbol:tools/gate.py#check",
+   "target": "symbol:tools/gate.py#read",
+   "type": "CALLS",
+   "evidence": "tools/gate.py:46",
+   "resolution": "same-file"
+  },
+  {
+   "source": "symbol:tools/gate.py#check",
+   "target": "symbol:tools/gate.py#count_tests",
+   "type": "CALLS",
+   "evidence": "tools/gate.py:70",
+   "resolution": "same-file"
+  },
+  {
+   "source": "symbol:tools/gate.py#main",
+   "target": "symbol:tools/gate.py#fail",
+   "type": "CALLS",
+   "evidence": "tools/gate.py:88",
+   "resolution": "same-file"
+  },
+  {
+   "source": "symbol:tools/gate.py#main",
+   "target": "symbol:tools/gate.py#read",
+   "type": "CALLS",
+   "evidence": "tools/gate.py:94",
+   "resolution": "same-file"
+  },
+  {
+   "source": "symbol:tools/gate.py#main",
+   "target": "symbol:tools/gate.py#check",
+   "type": "CALLS",
+   "evidence": "tools/gate.py:110",
+   "resolution": "same-file"
+  },
+  {
+   "source": "file:tools/plan.py",
+   "target": "file:tools/gate.py",
+   "type": "IMPORTS",
+   "evidence": "tools/plan.py:15",
+   "resolution": "exact"
+  },
+  {
+   "source": "symbol:tools/plan.py#scan",
+   "target": "symbol:tools/gate.py#count_tests",
+   "type": "CALLS",
+   "evidence": "tools/plan.py:36",
+   "resolution": "import"
+  },
+  {
+   "source": "symbol:tools/plan.py#main",
+   "target": "symbol:tools/plan.py#scan",
+   "type": "CALLS",
+   "evidence": "tools/plan.py:45",
+   "resolution": "same-file"
+  },
+  {
+   "source": "component:catalog",
+   "target": "page:lld/catalog/README.md",
+   "type": "HAS_PAGE",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/catalog/README.md",
+   "target": "file:components/catalog/catalog.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "component:catalog",
+   "target": "file:components/catalog/catalog.py",
+   "type": "CONTAINS",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/catalog/README.md",
+   "target": "file:components/catalog/test_catalog.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "component:catalog",
+   "target": "file:components/catalog/test_catalog.py",
+   "type": "CONTAINS",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:catalog",
+   "target": "store:_PRODUCTS",
+   "type": "READS",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:catalog",
+   "target": "config:SUPPLIER_FEED_URL",
+   "type": "READS",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:catalog",
+   "target": "config:IMAGE_CDN",
+   "type": "READS",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:catalog",
+   "target": "store:_PRODUCTS",
+   "type": "WRITES",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:catalog",
+   "target": "external:Supplier product feed",
+   "type": "CALLS",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:catalog",
+   "target": "config:SUPPLIER_FEED_URL",
+   "type": "CONFIG",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:catalog",
+   "target": "config:IMAGE_CDN",
+   "type": "CONFIG",
+   "evidence": "lld/catalog/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:catalog",
+   "target": "page:lld/catalog/catalog.md",
+   "type": "HAS_PAGE",
+   "evidence": "lld/catalog/catalog.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/catalog/catalog.md",
+   "target": "file:components/catalog/catalog.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/catalog/catalog.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "store:_PRODUCTS",
+   "type": "READS",
+   "evidence": "lld/catalog/catalog.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "config:SUPPLIER_FEED_URL",
+   "type": "READS",
+   "evidence": "lld/catalog/catalog.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "config:IMAGE_CDN",
+   "type": "READS",
+   "evidence": "lld/catalog/catalog.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "store:_PRODUCTS",
+   "type": "WRITES",
+   "evidence": "lld/catalog/catalog.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "external:Supplier product feed",
+   "type": "CALLS",
+   "evidence": "lld/catalog/catalog.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "config:SUPPLIER_FEED_URL",
+   "type": "CONFIG",
+   "evidence": "lld/catalog/catalog.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/catalog/catalog.py",
+   "target": "config:IMAGE_CDN",
+   "type": "CONFIG",
+   "evidence": "lld/catalog/catalog.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:catalog",
+   "target": "page:lld/catalog/test_catalog.md",
+   "type": "HAS_PAGE",
+   "evidence": "lld/catalog/test_catalog.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/catalog/test_catalog.md",
+   "target": "file:components/catalog/test_catalog.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/catalog/test_catalog.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/catalog/test_catalog.py",
+   "target": "symbol:components/catalog/catalog.py#price_of",
+   "type": "CALLS",
+   "evidence": "lld/catalog/test_catalog.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/data-dictionary.md",
+   "target": "store:_PRODUCTS",
+   "type": "READS",
+   "evidence": "lld/data-dictionary.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/data-dictionary.md",
+   "target": "file:codebase-analysis/plan.json",
+   "type": "READS",
+   "evidence": "lld/data-dictionary.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/data-dictionary.md",
+   "target": "file:codebase-analysis/components/*/status.json",
+   "type": "READS",
+   "evidence": "lld/data-dictionary.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/data-dictionary.md",
+   "target": "file:codebase-analysis/components/*/inventory.md",
+   "type": "READS",
+   "evidence": "lld/data-dictionary.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/data-dictionary.md",
+   "target": "file:codebase-analysis/components/*/risks.md",
+   "type": "READS",
+   "evidence": "lld/data-dictionary.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/data-dictionary.md",
+   "target": "file:codebase-analysis/components/*/tests-report.md",
+   "type": "READS",
+   "evidence": "lld/data-dictionary.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/data-dictionary.md",
+   "target": "store:_PRODUCTS",
+   "type": "WRITES",
+   "evidence": "lld/data-dictionary.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/data-dictionary.md",
+   "target": "file:codebase-analysis/plan.json",
+   "type": "WRITES",
+   "evidence": "lld/data-dictionary.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "page:lld/orders/README.md",
+   "type": "HAS_PAGE",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/orders/README.md",
+   "target": "file:components/orders/orders.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/orders/README.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "component:orders",
+   "target": "file:components/orders/orders.py",
+   "type": "CONTAINS",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/orders/README.md",
+   "target": "file:components/orders/test_orders.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/orders/README.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "component:orders",
+   "target": "file:components/orders/test_orders.py",
+   "type": "CONTAINS",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "config:PARTNER_SETTLE_URL",
+   "type": "READS",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "config:DEV_SETTLE_URL",
+   "type": "READS",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "external:Payment partner settlement endpoint",
+   "type": "CALLS",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "component:catalog",
+   "type": "USES",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "config:PARTNER_SETTLE_URL",
+   "type": "CONFIG",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "config:DEV_SETTLE_URL",
+   "type": "CONFIG",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "config:LOYALTY_DISCOUNT",
+   "type": "CONFIG",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "config:BULK_DISCOUNT",
+   "type": "CONFIG",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "config:BULK_THRESHOLD",
+   "type": "CONFIG",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "component:catalog",
+   "type": "DEPENDS_ON",
+   "evidence": "lld/orders/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "page:lld/orders/orders.md",
+   "type": "HAS_PAGE",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/orders/orders.md",
+   "target": "file:components/orders/orders.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "config:PARTNER_SETTLE_URL",
+   "type": "READS",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "config:DEV_SETTLE_URL",
+   "type": "READS",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "external:Payment partner settlement endpoint",
+   "type": "CALLS",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "symbol:components/catalog/catalog.py#price_of",
+   "type": "CALLS",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "symbol:components/catalog/catalog.py#in_stock",
+   "type": "CALLS",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "component:catalog",
+   "type": "USES",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "config:PARTNER_SETTLE_URL",
+   "type": "CONFIG",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "config:DEV_SETTLE_URL",
+   "type": "CONFIG",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "config:LOYALTY_DISCOUNT",
+   "type": "CONFIG",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "config:BULK_DISCOUNT",
+   "type": "CONFIG",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:components/orders/orders.py",
+   "target": "config:BULK_THRESHOLD",
+   "type": "CONFIG",
+   "evidence": "lld/orders/orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:orders",
+   "target": "page:lld/orders/test_orders.md",
+   "type": "HAS_PAGE",
+   "evidence": "lld/orders/test_orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/orders/test_orders.md",
+   "target": "file:components/orders/test_orders.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/orders/test_orders.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:components/orders/test_orders.py",
+   "target": "symbol:components/orders/orders.py#line_total",
+   "type": "CALLS",
+   "evidence": "lld/orders/test_orders.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "page:lld/tools/README.md",
+   "type": "HAS_PAGE",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/tools/README.md",
+   "target": "file:tools/plan.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "component:tools",
+   "target": "file:tools/plan.py",
+   "type": "CONTAINS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/tools/README.md",
+   "target": "file:tools/gate.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "component:tools",
+   "target": "file:tools/gate.py",
+   "type": "CONTAINS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/tools/README.md",
+   "target": "file:tools/fanout.sh",
+   "type": "DOCUMENTS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "component:tools",
+   "target": "file:tools/fanout.sh",
+   "type": "CONTAINS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "file:components/*/*.py",
+   "type": "READS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "file:codebase-analysis/plan.json",
+   "type": "READS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "file:codebase-analysis/components/*/status.json",
+   "type": "READS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "file:codebase-analysis/components/*/inventory.md",
+   "type": "READS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "file:codebase-analysis/components/*/risks.md",
+   "type": "READS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "file:codebase-analysis/components/*/tests-report.md",
+   "type": "READS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "file:codebase-analysis/plan.json",
+   "type": "WRITES",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "external:GitHub",
+   "type": "CALLS",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "symbol:tools/gate.py#count_tests",
+   "type": "USES",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "config:ENGINE",
+   "type": "CONFIG",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "job:python tools/plan.py",
+   "type": "EXPOSES",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "job:python tools/gate.py",
+   "type": "EXPOSES",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "job:tools/fanout.sh",
+   "type": "EXPOSES",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "component:orders",
+   "type": "DEPENDS_ON",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "component:catalog",
+   "type": "DEPENDS_ON",
+   "evidence": "lld/tools/README.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "page:lld/tools/fanout.md",
+   "type": "HAS_PAGE",
+   "evidence": "lld/tools/fanout.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/tools/fanout.md",
+   "target": "file:tools/fanout.sh",
+   "type": "DOCUMENTS",
+   "evidence": "lld/tools/fanout.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:tools/fanout.sh",
+   "target": "file:codebase-analysis/plan.json",
+   "type": "READS",
+   "evidence": "lld/tools/fanout.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:tools/fanout.sh",
+   "target": "external:GitHub",
+   "type": "CALLS",
+   "evidence": "lld/tools/fanout.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:tools/fanout.sh",
+   "target": "config:ENGINE",
+   "type": "CONFIG",
+   "evidence": "lld/tools/fanout.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "page:lld/tools/gate.md",
+   "type": "HAS_PAGE",
+   "evidence": "lld/tools/gate.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/tools/gate.md",
+   "target": "file:tools/gate.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/tools/gate.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "file:codebase-analysis/plan.json",
+   "type": "READS",
+   "evidence": "lld/tools/gate.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "file:codebase-analysis/components/*/status.json",
+   "type": "READS",
+   "evidence": "lld/tools/gate.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "file:codebase-analysis/components/*/inventory.md",
+   "type": "READS",
+   "evidence": "lld/tools/gate.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "file:codebase-analysis/components/*/risks.md",
+   "type": "READS",
+   "evidence": "lld/tools/gate.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "file:codebase-analysis/components/*/tests-report.md",
+   "type": "READS",
+   "evidence": "lld/tools/gate.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "file:components/*/test_*.py",
+   "type": "READS",
+   "evidence": "lld/tools/gate.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:tools/gate.py",
+   "target": "symbol:tools/gate.py#count_tests",
+   "type": "CALLS",
+   "evidence": "lld/tools/gate.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "component:tools",
+   "target": "page:lld/tools/plan.md",
+   "type": "HAS_PAGE",
+   "evidence": "lld/tools/plan.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "page:lld/tools/plan.md",
+   "target": "file:tools/plan.py",
+   "type": "DOCUMENTS",
+   "evidence": "lld/tools/plan.md",
+   "resolution": "exact"
+  },
+  {
+   "source": "file:tools/plan.py",
+   "target": "file:components/*/*.py",
+   "type": "READS",
+   "evidence": "lld/tools/plan.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:tools/plan.py",
+   "target": "file:codebase-analysis/plan.json",
+   "type": "WRITES",
+   "evidence": "lld/tools/plan.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:tools/plan.py",
+   "target": "symbol:tools/gate.py#count_tests",
+   "type": "CALLS",
+   "evidence": "lld/tools/plan.md",
+   "resolution": "analysis"
+  },
+  {
+   "source": "file:tools/plan.py",
+   "target": "symbol:tools/gate.py#count_tests",
+   "type": "USES",
+   "evidence": "lld/tools/plan.md",
+   "resolution": "analysis"
+  }
+ ]
+}

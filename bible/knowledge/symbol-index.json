@@ -1,0 +1,691 @@
+{
+ "symbols": {
+  "symbol:components/catalog/catalog.py#get_product": {
+   "name": "get_product",
+   "kind": "function",
+   "file": "components/catalog/catalog.py",
+   "lines": [
+    15,
+    17
+   ],
+   "pages": [
+    "lld/catalog/README.md",
+    "lld/catalog/catalog.md"
+   ],
+   "card": [
+    "lld/catalog/catalog.md#get_productsku"
+   ],
+   "chunks": [
+    "hld/03-integrations.md#inbound-interfaces",
+    "hld/04-data-architecture.md#stores",
+    "knowledge/AGENT-CONTEXT.md#components",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "knowledge/AGENT-CONTEXT.md#hazards",
+    "lld/catalog/README.md#data",
+    "lld/catalog/README.md#public-interface",
+    "lld/catalog/README.md#responsibility",
+    "lld/catalog/README.md#structure",
+    "lld/catalog/README.md#surprises",
+    "lld/catalog/README.md#tests",
+    "lld/catalog/catalog.md#call-graph",
+    "lld/catalog/catalog.md#get_productsku",
+    "lld/catalog/catalog.md#in_stocksku-qty1",
+    "lld/catalog/catalog.md#index",
+    "lld/catalog/catalog.md#price_ofsku",
+    "lld/catalog/catalog.md#summary",
+    "lld/catalog/catalog.md#surprises",
+    "lld/catalog/test_catalog.md#summary",
+    "lld/data-dictionary.md#_products-dict-keyed-by-sku"
+   ]
+  },
+  "symbol:components/catalog/catalog.py#price_of": {
+   "name": "price_of",
+   "kind": "function",
+   "file": "components/catalog/catalog.py",
+   "lines": [
+    20,
+    24
+   ],
+   "pages": [
+    "lld/catalog/README.md",
+    "lld/catalog/catalog.md"
+   ],
+   "card": [
+    "lld/catalog/catalog.md#price_ofsku"
+   ],
+   "chunks": [
+    "hld/03-integrations.md#inbound-interfaces",
+    "hld/04-data-architecture.md#stores",
+    "hld/05-key-flows.md#1-price-an-order",
+    "hld/06-cross-cutting.md#testing",
+    "knowledge/AGENT-CONTEXT.md#components",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "knowledge/AGENT-CONTEXT.md#rules-the-code-enforces",
+    "lld/catalog/README.md#business-rules",
+    "lld/catalog/README.md#errors-and-resilience",
+    "lld/catalog/README.md#modules",
+    "lld/catalog/README.md#public-interface",
+    "lld/catalog/README.md#responsibility",
+    "lld/catalog/README.md#structure",
+    "lld/catalog/README.md#tests",
+    "lld/catalog/catalog.md#call-graph",
+    "lld/catalog/catalog.md#get_productsku",
+    "lld/catalog/catalog.md#index",
+    "lld/catalog/catalog.md#price_ofsku",
+    "lld/catalog/catalog.md#summary",
+    "lld/catalog/test_catalog.md#call-graph"
+   ]
+  },
+  "symbol:components/catalog/catalog.py#in_stock": {
+   "name": "in_stock",
+   "kind": "function",
+   "file": "components/catalog/catalog.py",
+   "lines": [
+    27,
+    29
+   ],
+   "pages": [
+    "lld/catalog/README.md",
+    "lld/catalog/catalog.md"
+   ],
+   "card": [
+    "lld/catalog/catalog.md#in_stocksku-qty1"
+   ],
+   "chunks": [
+    "hld/03-integrations.md#inbound-interfaces",
+    "hld/04-data-architecture.md#stores",
+    "hld/05-key-flows.md#2-validate-order-lines",
+    "knowledge/AGENT-CONTEXT.md#components",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "lld/catalog/README.md#business-rules",
+    "lld/catalog/README.md#modules",
+    "lld/catalog/README.md#public-interface",
+    "lld/catalog/README.md#responsibility",
+    "lld/catalog/README.md#structure",
+    "lld/catalog/README.md#tests",
+    "lld/catalog/catalog.md#call-graph",
+    "lld/catalog/catalog.md#get_productsku",
+    "lld/catalog/catalog.md#in_stocksku-qty1",
+    "lld/catalog/catalog.md#index",
+    "lld/catalog/catalog.md#summary",
+    "lld/catalog/test_catalog.md#summary",
+    "lld/data-dictionary.md#_products-dict-keyed-by-sku",
+    "lld/orders/README.md#business-rules",
+    "lld/orders/README.md#data"
+   ]
+  },
+  "symbol:components/catalog/catalog.py#image_url": {
+   "name": "image_url",
+   "kind": "function",
+   "file": "components/catalog/catalog.py",
+   "lines": [
+    32,
+    33
+   ],
+   "pages": [
+    "lld/catalog/README.md",
+    "lld/catalog/catalog.md"
+   ],
+   "card": [
+    "lld/catalog/catalog.md#image_urlsku"
+   ],
+   "chunks": [
+    "hld/01-system-context.md#people-and-outside-systems",
+    "hld/03-integrations.md#inbound-interfaces",
+    "knowledge/AGENT-CONTEXT.md#components",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "lld/catalog/README.md#business-rules",
+    "lld/catalog/README.md#public-interface",
+    "lld/catalog/README.md#responsibility",
+    "lld/catalog/README.md#structure",
+    "lld/catalog/README.md#tests",
+    "lld/catalog/catalog.md#call-graph",
+    "lld/catalog/catalog.md#image_urlsku",
+    "lld/catalog/catalog.md#index",
+    "lld/catalog/catalog.md#summary",
+    "lld/catalog/test_catalog.md#summary",
+    "reference/configuration.md#configuration"
+   ]
+  },
+  "symbol:components/catalog/catalog.py#fetch_supplier_feed": {
+   "name": "fetch_supplier_feed",
+   "kind": "function",
+   "file": "components/catalog/catalog.py",
+   "lines": [
+    36,
+    39
+   ],
+   "pages": [
+    "lld/catalog/README.md",
+    "lld/catalog/catalog.md"
+   ],
+   "card": [
+    "lld/catalog/catalog.md#fetch_supplier_feedtimeout10"
+   ],
+   "chunks": [
+    "README.md#in-two-minutes",
+    "hld/01-system-context.md#people-and-outside-systems",
+    "hld/03-integrations.md#inbound-interfaces",
+    "hld/03-integrations.md#outbound-connections",
+    "hld/05-key-flows.md#4-refresh-the-catalog-from-the-supplier-feed",
+    "hld/05-key-flows.md#key-flows",
+    "hld/06-cross-cutting.md#testing",
+    "knowledge/AGENT-CONTEXT.md#components",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "knowledge/AGENT-CONTEXT.md#open-questions",
+    "lld/catalog/README.md#errors-and-resilience",
+    "lld/catalog/README.md#modules",
+    "lld/catalog/README.md#public-interface",
+    "lld/catalog/README.md#responsibility",
+    "lld/catalog/README.md#structure",
+    "lld/catalog/README.md#surprises",
+    "lld/catalog/README.md#tests",
+    "lld/catalog/catalog.md#apply_feedfeed",
+    "lld/catalog/catalog.md#call-graph",
+    "lld/catalog/catalog.md#fetch_supplier_feedtimeout10"
+   ]
+  },
+  "symbol:components/catalog/catalog.py#apply_feed": {
+   "name": "apply_feed",
+   "kind": "function",
+   "file": "components/catalog/catalog.py",
+   "lines": [
+    42,
+    47
+   ],
+   "pages": [
+    "lld/catalog/README.md",
+    "lld/catalog/catalog.md"
+   ],
+   "card": [
+    "lld/catalog/catalog.md#apply_feedfeed"
+   ],
+   "chunks": [
+    "README.md#in-two-minutes",
+    "hld/03-integrations.md#inbound-interfaces",
+    "hld/04-data-architecture.md#files-caches-and-other-state",
+    "hld/04-data-architecture.md#lifecycles",
+    "hld/05-key-flows.md#4-refresh-the-catalog-from-the-supplier-feed",
+    "hld/05-key-flows.md#key-flows",
+    "hld/06-cross-cutting.md#resilience",
+    "knowledge/AGENT-CONTEXT.md#components",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "knowledge/AGENT-CONTEXT.md#hazards",
+    "knowledge/AGENT-CONTEXT.md#open-questions",
+    "knowledge/AGENT-CONTEXT.md#rules-the-code-enforces",
+    "lld/catalog/README.md#business-rules",
+    "lld/catalog/README.md#data",
+    "lld/catalog/README.md#errors-and-resilience",
+    "lld/catalog/README.md#modules",
+    "lld/catalog/README.md#public-interface",
+    "lld/catalog/README.md#responsibility",
+    "lld/catalog/README.md#structure",
+    "lld/catalog/README.md#surprises"
+   ]
+  },
+  "symbol:components/catalog/test_catalog.py#CatalogTest": {
+   "name": "CatalogTest",
+   "kind": "class",
+   "file": "components/catalog/test_catalog.py",
+   "lines": [
+    6,
+    8
+   ],
+   "pages": [
+    "lld/catalog/README.md",
+    "lld/catalog/test_catalog.md"
+   ],
+   "card": [
+    "lld/catalog/test_catalog.md#catalogtest",
+    "lld/catalog/test_catalog.md#catalogtesttest_price_of_known_sku"
+   ],
+   "chunks": [
+    "lld/catalog/README.md#main-types",
+    "lld/catalog/test_catalog.md#catalogtest",
+    "lld/catalog/test_catalog.md#index"
+   ]
+  },
+  "symbol:components/catalog/test_catalog.py#CatalogTest.test_price_of_known_sku": {
+   "name": "CatalogTest.test_price_of_known_sku",
+   "kind": "method",
+   "file": "components/catalog/test_catalog.py",
+   "lines": [
+    7,
+    8
+   ],
+   "pages": [
+    "lld/catalog/README.md",
+    "lld/catalog/test_catalog.md"
+   ],
+   "card": [
+    "lld/catalog/test_catalog.md#catalogtesttest_price_of_known_sku"
+   ],
+   "chunks": [
+    "lld/catalog/README.md#modules",
+    "lld/catalog/catalog.md#price_ofsku",
+    "lld/catalog/test_catalog.md#catalogtesttest_price_of_known_sku",
+    "lld/catalog/test_catalog.md#index"
+   ]
+  },
+  "symbol:components/orders/orders.py#line_total": {
+   "name": "line_total",
+   "kind": "function",
+   "file": "components/orders/orders.py",
+   "lines": [
+    19,
+    20
+   ],
+   "pages": [
+    "lld/orders/README.md",
+    "lld/orders/orders.md"
+   ],
+   "card": [
+    "lld/orders/orders.md#line_totalsku-qty"
+   ],
+   "chunks": [
+    "hld/03-integrations.md#inbound-interfaces",
+    "hld/05-key-flows.md#1-price-an-order",
+    "hld/06-cross-cutting.md#testing",
+    "knowledge/AGENT-CONTEXT.md#components",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "lld/catalog/README.md#business-rules",
+    "lld/catalog/catalog.md#price_ofsku",
+    "lld/data-dictionary.md#_products-dict-keyed-by-sku",
+    "lld/orders/README.md#errors-and-resilience",
+    "lld/orders/README.md#public-interface",
+    "lld/orders/README.md#responsibility",
+    "lld/orders/README.md#structure",
+    "lld/orders/README.md#tests",
+    "lld/orders/orders.md#call-graph",
+    "lld/orders/orders.md#index",
+    "lld/orders/orders.md#line_totalsku-qty",
+    "lld/orders/orders.md#order_totallines-loyalfalse",
+    "lld/orders/orders.md#summary",
+    "lld/orders/test_orders.md#call-graph",
+    "lld/orders/test_orders.md#index"
+   ]
+  },
+  "symbol:components/orders/orders.py#order_total": {
+   "name": "order_total",
+   "kind": "function",
+   "file": "components/orders/orders.py",
+   "lines": [
+    23,
+    32
+   ],
+   "pages": [
+    "lld/orders/README.md",
+    "lld/orders/orders.md"
+   ],
+   "card": [
+    "lld/orders/orders.md#order_totallines-loyalfalse"
+   ],
+   "chunks": [
+    "README.md#in-two-minutes",
+    "hld/03-integrations.md#inbound-interfaces",
+    "hld/05-key-flows.md#1-price-an-order",
+    "hld/05-key-flows.md#key-flows",
+    "knowledge/AGENT-CONTEXT.md#components",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "knowledge/AGENT-CONTEXT.md#hazards",
+    "knowledge/AGENT-CONTEXT.md#open-questions",
+    "lld/data-dictionary.md#order-lines-and-settlement-message-in-flight-data",
+    "lld/orders/README.md#business-rules",
+    "lld/orders/README.md#errors-and-resilience",
+    "lld/orders/README.md#modules",
+    "lld/orders/README.md#public-interface",
+    "lld/orders/README.md#responsibility",
+    "lld/orders/README.md#structure",
+    "lld/orders/README.md#surprises",
+    "lld/orders/README.md#tests",
+    "lld/orders/orders.md#call-graph",
+    "lld/orders/orders.md#index",
+    "lld/orders/orders.md#line_totalsku-qty"
+   ]
+  },
+  "symbol:components/orders/orders.py#validate": {
+   "name": "validate",
+   "kind": "function",
+   "file": "components/orders/orders.py",
+   "lines": [
+    35,
+    42
+   ],
+   "pages": [
+    "lld/orders/README.md",
+    "lld/orders/orders.md"
+   ],
+   "card": [
+    "lld/orders/orders.md#validatelines"
+   ],
+   "chunks": [
+    "README.md#in-two-minutes",
+    "hld/03-integrations.md#inbound-interfaces",
+    "hld/05-key-flows.md#2-validate-order-lines",
+    "hld/05-key-flows.md#key-flows",
+    "hld/06-cross-cutting.md#error-handling",
+    "knowledge/AGENT-CONTEXT.md#components",
+    "knowledge/AGENT-CONTEXT.md#conventions",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "knowledge/AGENT-CONTEXT.md#hazards",
+    "knowledge/AGENT-CONTEXT.md#open-questions",
+    "knowledge/AGENT-CONTEXT.md#rules-the-code-enforces",
+    "lld/catalog/README.md#business-rules",
+    "lld/catalog/catalog.md#in_stocksku-qty1",
+    "lld/data-dictionary.md#_products-dict-keyed-by-sku",
+    "lld/data-dictionary.md#order-lines-and-settlement-message-in-flight-data",
+    "lld/orders/README.md#business-rules",
+    "lld/orders/README.md#errors-and-resilience",
+    "lld/orders/README.md#modules",
+    "lld/orders/README.md#public-interface",
+    "lld/orders/README.md#responsibility"
+   ]
+  },
+  "symbol:components/orders/orders.py#settle": {
+   "name": "settle",
+   "kind": "function",
+   "file": "components/orders/orders.py",
+   "lines": [
+    45,
+    51
+   ],
+   "pages": [
+    "lld/orders/README.md",
+    "lld/orders/orders.md"
+   ],
+   "card": [
+    "lld/orders/orders.md#settleorder_id-amount-devfalse-timeout15"
+   ],
+   "chunks": [
+    "README.md#in-two-minutes",
+    "hld/01-system-context.md#people-and-outside-systems",
+    "hld/02-architecture.md#configuration-sources",
+    "hld/03-integrations.md#inbound-interfaces",
+    "hld/03-integrations.md#outbound-connections",
+    "hld/04-data-architecture.md#lifecycles",
+    "hld/05-key-flows.md#3-settle-an-order",
+    "hld/05-key-flows.md#key-flows",
+    "hld/06-cross-cutting.md#configuration",
+    "hld/06-cross-cutting.md#resilience",
+    "hld/06-cross-cutting.md#testing",
+    "knowledge/AGENT-CONTEXT.md#components",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "knowledge/AGENT-CONTEXT.md#hazards",
+    "knowledge/AGENT-CONTEXT.md#open-questions",
+    "lld/data-dictionary.md#order-lines-and-settlement-message-in-flight-data",
+    "lld/orders/README.md#business-rules",
+    "lld/orders/README.md#errors-and-resilience",
+    "lld/orders/README.md#modules",
+    "lld/orders/README.md#public-interface"
+   ]
+  },
+  "symbol:components/orders/test_orders.py#OrdersTest": {
+   "name": "OrdersTest",
+   "kind": "class",
+   "file": "components/orders/test_orders.py",
+   "lines": [
+    6,
+    8
+   ],
+   "pages": [
+    "lld/orders/README.md",
+    "lld/orders/test_orders.md"
+   ],
+   "card": [
+    "lld/orders/test_orders.md#orderstest",
+    "lld/orders/test_orders.md#orderstesttest_line_total"
+   ],
+   "chunks": [
+    "lld/orders/README.md#main-types",
+    "lld/orders/test_orders.md#index",
+    "lld/orders/test_orders.md#orderstest"
+   ]
+  },
+  "symbol:components/orders/test_orders.py#OrdersTest.test_line_total": {
+   "name": "OrdersTest.test_line_total",
+   "kind": "method",
+   "file": "components/orders/test_orders.py",
+   "lines": [
+    7,
+    8
+   ],
+   "pages": [
+    "lld/orders/README.md",
+    "lld/orders/test_orders.md"
+   ],
+   "card": [
+    "lld/orders/test_orders.md#orderstesttest_line_total"
+   ],
+   "chunks": [
+    "lld/orders/README.md#modules",
+    "lld/orders/orders.md#line_totalsku-qty",
+    "lld/orders/test_orders.md#index",
+    "lld/orders/test_orders.md#orderstesttest_line_total"
+   ]
+  },
+  "symbol:tools/gate.py#fail": {
+   "name": "fail",
+   "kind": "function",
+   "file": "tools/gate.py",
+   "lines": [
+    23,
+    26
+   ],
+   "pages": [
+    "lld/tools/README.md",
+    "lld/tools/gate.md"
+   ],
+   "card": [
+    "lld/tools/gate.md#failmsgs"
+   ],
+   "chunks": [
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "lld/tools/gate.md#call-graph",
+    "lld/tools/gate.md#failmsgs",
+    "lld/tools/gate.md#index",
+    "lld/tools/gate.md#main",
+    "lld/tools/gate.md#summary"
+   ]
+  },
+  "symbol:tools/gate.py#read": {
+   "name": "read",
+   "kind": "function",
+   "file": "tools/gate.py",
+   "lines": [
+    29,
+    30
+   ],
+   "pages": [
+    "lld/tools/README.md",
+    "lld/tools/gate.md"
+   ],
+   "card": [
+    "lld/tools/README.md#configuration-read",
+    "lld/tools/gate.md#readpath"
+   ],
+   "chunks": [
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "lld/catalog/catalog.md#fetch_supplier_feedtimeout10",
+    "lld/tools/gate.md#call-graph",
+    "lld/tools/gate.md#checkcomponent-n-plan-out",
+    "lld/tools/gate.md#index",
+    "lld/tools/gate.md#main",
+    "lld/tools/gate.md#readpath",
+    "lld/tools/gate.md#summary"
+   ]
+  },
+  "symbol:tools/gate.py#count_tests": {
+   "name": "count_tests",
+   "kind": "function",
+   "file": "tools/gate.py",
+   "lines": [
+    33,
+    39
+   ],
+   "pages": [
+    "lld/tools/README.md",
+    "lld/tools/gate.md"
+   ],
+   "card": [
+    "lld/tools/gate.md#count_testspaths"
+   ],
+   "chunks": [
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "lld/tools/README.md#data",
+    "lld/tools/README.md#modules",
+    "lld/tools/README.md#public-interface",
+    "lld/tools/README.md#structure",
+    "lld/tools/gate.md#call-graph",
+    "lld/tools/gate.md#checkcomponent-n-plan-out",
+    "lld/tools/gate.md#count_testspaths",
+    "lld/tools/gate.md#index",
+    "lld/tools/gate.md#summary",
+    "lld/tools/plan.md#call-graph",
+    "lld/tools/plan.md#module-level-code",
+    "lld/tools/plan.md#plan",
+    "lld/tools/plan.md#scancomponent_dir"
+   ]
+  },
+  "symbol:tools/gate.py#check": {
+   "name": "check",
+   "kind": "function",
+   "file": "tools/gate.py",
+   "lines": [
+    42,
+    78
+   ],
+   "pages": [
+    "lld/tools/README.md",
+    "lld/tools/gate.md"
+   ],
+   "card": [
+    "lld/tools/gate.md#checkcomponent-n-plan-out"
+   ],
+   "chunks": [
+    "hld/03-integrations.md#outbound-connections",
+    "hld/05-key-flows.md#6-gate-one-pass",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "lld/data-dictionary.md#analysis-files-read-by-the-gate",
+    "lld/data-dictionary.md#codebase-analysisplanjson",
+    "lld/tools/README.md#business-rules",
+    "lld/tools/README.md#data",
+    "lld/tools/README.md#modules",
+    "lld/tools/gate.md#call-graph",
+    "lld/tools/gate.md#checkcomponent-n-plan-out",
+    "lld/tools/gate.md#count_testspaths",
+    "lld/tools/gate.md#index",
+    "lld/tools/gate.md#main",
+    "lld/tools/gate.md#readpath",
+    "lld/tools/gate.md#summary",
+    "progress.md#quality-gate-pass-11",
+    "progress.md#reader-test"
+   ]
+  },
+  "symbol:tools/gate.py#main": {
+   "name": "main",
+   "kind": "function",
+   "file": "tools/gate.py",
+   "lines": [
+    81,
+    113
+   ],
+   "pages": [
+    "lld/tools/README.md",
+    "lld/tools/gate.md"
+   ],
+   "card": [
+    "lld/tools/gate.md#main"
+   ],
+   "chunks": [
+    "hld/04-data-architecture.md#files-caches-and-other-state",
+    "hld/04-data-architecture.md#stores",
+    "hld/05-key-flows.md#5-write-the-inventory",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "lld/catalog/test_catalog.md#module-level-code",
+    "lld/catalog/test_catalog.md#summary",
+    "lld/data-dictionary.md#analysis-files-read-by-the-gate",
+    "lld/data-dictionary.md#codebase-analysisplanjson",
+    "lld/data-dictionary.md#status-and-enum-values",
+    "lld/orders/test_orders.md#module-level-code",
+    "lld/orders/test_orders.md#summary",
+    "lld/tools/README.md#business-rules",
+    "lld/tools/README.md#data",
+    "lld/tools/README.md#modules",
+    "lld/tools/gate.md#call-graph",
+    "lld/tools/gate.md#checkcomponent-n-plan-out",
+    "lld/tools/gate.md#failmsgs",
+    "lld/tools/gate.md#index",
+    "lld/tools/gate.md#main",
+    "lld/tools/gate.md#readpath"
+   ]
+  },
+  "symbol:tools/plan.py#scan": {
+   "name": "scan",
+   "kind": "function",
+   "file": "tools/plan.py",
+   "lines": [
+    21,
+    38
+   ],
+   "pages": [
+    "lld/tools/README.md",
+    "lld/tools/plan.md"
+   ],
+   "card": [
+    "lld/tools/plan.md#scancomponent_dir"
+   ],
+   "chunks": [
+    "hld/04-data-architecture.md#stores",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "lld/tools/README.md#business-rules",
+    "lld/tools/README.md#data",
+    "lld/tools/README.md#modules",
+    "lld/tools/gate.md#count_testspaths",
+    "lld/tools/plan.md#call-graph",
+    "lld/tools/plan.md#index",
+    "lld/tools/plan.md#main",
+    "lld/tools/plan.md#scancomponent_dir",
+    "lld/tools/plan.md#summary"
+   ]
+  },
+  "symbol:tools/plan.py#main": {
+   "name": "main",
+   "kind": "function",
+   "file": "tools/plan.py",
+   "lines": [
+    41,
+    58
+   ],
+   "pages": [
+    "lld/tools/README.md",
+    "lld/tools/plan.md"
+   ],
+   "card": [
+    "lld/tools/plan.md#main"
+   ],
+   "chunks": [
+    "hld/04-data-architecture.md#files-caches-and-other-state",
+    "hld/04-data-architecture.md#stores",
+    "hld/05-key-flows.md#5-write-the-inventory",
+    "knowledge/AGENT-CONTEXT.md#function-index",
+    "lld/catalog/test_catalog.md#module-level-code",
+    "lld/catalog/test_catalog.md#summary",
+    "lld/data-dictionary.md#analysis-files-read-by-the-gate",
+    "lld/data-dictionary.md#codebase-analysisplanjson",
+    "lld/data-dictionary.md#status-and-enum-values",
+    "lld/orders/test_orders.md#module-level-code",
+    "lld/orders/test_orders.md#summary",
+    "lld/tools/README.md#business-rules",
+    "lld/tools/README.md#data",
+    "lld/tools/README.md#modules",
+    "lld/tools/gate.md#call-graph",
+    "lld/tools/gate.md#checkcomponent-n-plan-out",
+    "lld/tools/gate.md#failmsgs",
+    "lld/tools/gate.md#index",
+    "lld/tools/gate.md#main",
+    "lld/tools/gate.md#readpath"
+   ]
+  }
+ },
+ "routes": {}
+}

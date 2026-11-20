@@ -185,3 +185,9 @@ Runs at import: the imports (`plan.py:8-12`), the path insert that puts this fol
 - Re-running the script resets the pass 3 baseline (see the notes of `main`).
 - Only quoted `http://` strings are found, so an `http://` address built from parts or kept in a comment would not reach `plan.json` (`tools/plan.py:18`).
 - Both `http://partner-legacy.internal/settle` and the developer-only `http://localhost:8099/settle` end up in the plan as sites to classify, because the pattern cannot tell them apart (`codebase-analysis/plan.json:78-83`).
+
+<!-- cites tools/fanout.sh@9ad43aa70e042837954fea1faf483f6c08e07470 -->
+
+<!-- cites tools/gate.py@65eb0af527e554cfb2dadb9d0c8cd1ee6e975c99 -->
+
+<!-- cites tools/plan.py@e1dae33df7990fe69b145146d570403758d0635e -->

@@ -1,0 +1,20 @@
+# Written by analyzing-a-codebase: how Git merges this folder when several people update it.
+# A page changed on both sides is never mixed line by line (its line numbers would count against two versions
+# of the code): Git keeps your side and reports a conflict. Keep it as it is, mark it resolved, and run the
+# update: the other side's code changes are found again and their cards redone.
+# Changelogs keep both sides. Generated files keep one side and are rebuilt by the scripts.
+*.md merge=binary
+CHANGELOG.md merge=union
+delta-log.md merge=union
+ledger/baseline.json merge=binary
+ledger/inventory.json merge=binary
+ledger/session.json merge=binary
+ledger/next.md merge=binary
+ledger/delta.md merge=binary
+ledger/track.md merge=binary
+ledger/symbol-checklist.md merge=binary
+ledger/coverage-report.md merge=binary
+ledger/citations.tsv merge=binary
+knowledge/*.json merge=binary
+knowledge/*.jsonl merge=binary
+knowledge/*.csv merge=binary

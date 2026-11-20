@@ -8,7 +8,7 @@ reads: [config:PARTNER_SETTLE_URL, config:DEV_SETTLE_URL]
 writes: []
 calls: [external:Payment partner settlement endpoint, symbol:price_of, symbol:in_stock]
 uses: [component:catalog]
-config: [PARTNER_SETTLE_URL, DEV_SETTLE_URL, LOYALTY_DISCOUNT, BULK_DISCOUNT, BULK_THRESHOLD]
+config: [config:PARTNER_SETTLE_URL, config:DEV_SETTLE_URL, config:LOYALTY_DISCOUNT, config:BULK_DISCOUNT, config:BULK_THRESHOLD]
 exposes: []
 ---
 # orders
@@ -259,3 +259,9 @@ Runs at import: the three imports (`orders.py:2-5`), the two URL constants (`ord
 - `PARTNER_SETTLE_URL` is plain `http` (`components/orders/orders.py:9`); the comment above it explains why in terms of the partner's plans (`components/orders/orders.py:7-8`).
 - `validate`, `order_total` and `settle` have no caller in the repository, so nothing enforces that `validate` runs before `order_total` or `settle` (search described under each card).
 - The `max` at `components/orders/orders.py:31` can only ever return `BULK_DISCOUNT` with the current constants.
+
+<!-- cites components/catalog/catalog.py@1e15fdaab1fa3c720d99a864abb4cac9c8259421 -->
+
+<!-- cites components/orders/orders.py@33203a1b4d48a6d335cf411f56a54a7035a66ae0 -->
+
+<!-- cites components/orders/test_orders.py@ca9144cf39abe39e988dc009863b036a7ee1a39f -->

@@ -8,7 +8,7 @@ reads: [store:_PRODUCTS, config:SUPPLIER_FEED_URL, config:IMAGE_CDN]
 writes: [store:_PRODUCTS]
 calls: [external:Supplier product feed]
 uses: []
-config: [SUPPLIER_FEED_URL, IMAGE_CDN]
+config: [config:SUPPLIER_FEED_URL, config:IMAGE_CDN]
 exposes: []
 ---
 # catalog
@@ -301,3 +301,9 @@ Runs at import: the imports (`catalog.py:2-3`), the two constants (`catalog.py:5
 - `SUPPLIER_FEED_URL` is plain `http` (`components/catalog/catalog.py:5`), and the feed is parsed and applied with no signature or schema check (`components/catalog/catalog.py:36-47`).
 - The docstring says `fetch_supplier_feed` runs nightly from cron (`components/catalog/catalog.py:37`), but nothing in the repository schedules it or feeds its result to `apply_feed`.
 - `get_product` returns the live record, so a caller can change a price by editing the returned dict (`components/catalog/catalog.py:17`).
+
+<!-- cites components/catalog/catalog.py@1e15fdaab1fa3c720d99a864abb4cac9c8259421 -->
+
+<!-- cites components/catalog/test_catalog.py@9be40d147e425d178067c8b34f19b28b9b374d1f -->
+
+<!-- cites components/orders/orders.py@33203a1b4d48a6d335cf411f56a54a7035a66ae0 -->
