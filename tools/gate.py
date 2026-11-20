@@ -86,18 +86,25 @@ def main():
     if args.component not in plan["components"]:
         return fail([f"unknown component {args.component}"])
     out = ROOT / "codebase-analysis" / "components" / args.component
+    errors = []
     if args.n:
         passes = [args.n]
     else:
-        status = read(out / "status.json")
-        passes = json.loads(status).get("passes_done", []) if status else []
+        raw = read(out / "status.json")
+        try:
+            status = json.loads(raw) if raw else {}
+        except json.JSONDecodeError as e:
+            return fail([f"status.json is not valid JSON: {e}"])
+        if not isinstance(status, dict):
+            return fail(["status.json must be a JSON object"])
+        passes = status.get("passes_done", [])
         if not passes:
             return fail(["status.json missing or no passes_done"])
-    errors = []
-    status = read(out / "status.json")
-    open_q = json.loads(status).get("open_questions", 0) if status else 0
-    if not args.n and open_q:
-        errors.append(f"blocked: {open_q} open question(s) waiting for the team (see the PR description)")
+        open_q = status.get("open_questions", 0)
+        if not isinstance(open_q, int) or isinstance(open_q, bool) or open_q < 0:
+            errors.append(f"status.json open_questions must be a non-negative integer, got {open_q!r}")
+        elif open_q > 0:
+            errors.append(f"blocked: {open_q} open question(s) waiting for the team (see the PR description)")
     for n in passes:
         errs = check(args.component, n, plan, out)
         print(f"{args.component} pass {n}: {'PASS' if not errs else 'FAIL'}")
