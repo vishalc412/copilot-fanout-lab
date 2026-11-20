@@ -1,6 +1,9 @@
 name: Analysis gate
 on:
   pull_request:
+    paths:
+      - "codebase-analysis/components/**"
+      - "components/**/test_*.py"
 permissions:
   contents: read
 jobs:
