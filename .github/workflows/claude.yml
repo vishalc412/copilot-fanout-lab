@@ -23,7 +23,9 @@ jobs:
       id-token: write
     steps:
       - name: Mention received
-        run: echo "@claude mention on #${{ github.event.issue.number || github.event.pull_request.number }} reached Actions."
+        env:
+          NUMBER: ${{ github.event.issue.number || github.event.pull_request.number }}
+        run: echo "@claude mention on number ${NUMBER} reached Actions."
       - name: Check for a Claude secret
         id: secret
         env:
