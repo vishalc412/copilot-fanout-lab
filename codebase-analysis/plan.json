@@ -13,6 +13,7 @@
       "tests": [
         "components/catalog/test_catalog.py"
       ],
+      "test_count": 1,
       "functions": [
         {
           "name": "get_product",
@@ -53,6 +54,7 @@
       "tests": [
         "components/orders/test_orders.py"
       ],
+      "test_count": 1,
       "functions": [
         {
           "name": "line_total",
