@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-21T03:02:49",
+ "generated": "2026-11-21T03:06:16",
  "tool": "analyzing-a-codebase/scripts/inventory.py 1.8.0",
  "totals": {
   "files": 14,
@@ -60,7 +60,7 @@
    "kind": "doc",
    "lang": null,
    "binary": false,
-   "lines": 59,
+   "lines": 81,
    "symbols": [],
    "routes": []
   },

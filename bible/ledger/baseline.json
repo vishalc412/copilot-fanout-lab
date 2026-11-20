@@ -1,6 +1,6 @@
 {
 "tool": "analyzing-a-codebase/scripts/delta.py 1.8.0",
-"recorded": "2026-11-21T03:03:04",
+"recorded": "2026-11-21T03:05:31",
 "label": "bible",
 "excludes": [
 "codebase-analysis",
@@ -60,17 +60,17 @@
 "routes": []
 },
 ".agent/PROMPT.md": {
-"sha": "b60209158b12d2a4958f716578a4c2d8a439863c391f005e5a714cd27cd23cf4",
-"blob": "260dba1b40c9cffc4ec7990b291f121ea5e2d533",
+"sha": "2c40ff29b92879f8bd5ad2d9ac1ff02cf3368cd1d30267663cb0519cad6dd640",
+"blob": "64db8fec46f0210a4922702baf199130ae355025",
 "kind": "doc",
-"lines": 59,
+"lines": 81,
 "binary": false,
 "hashes": [
 "8da1bd09d6",
 "2b447f5982",
 "d59e8052f3",
 "e3b0c44298",
-"58e8d32e8b",
+"3ff3e486f2",
 "73ac9684f4",
 "e3b0c44298",
 "2e4fb272c7",
@@ -120,11 +120,33 @@
 "4e58e5fbdc",
 "bfd498b593",
 "e3b0c44298",
+"9ca47f9df1",
+"c760d451aa",
+"e3b0c44298",
+"cbd440e965",
+"f1b9018473",
+"9ada42cfc3",
+"da6bd9621e",
+"e33cef0e1d",
+"5c422d86e2",
+"6c6648d28f",
+"cb4a92e852",
+"19b9bf390a",
+"95933d2920",
+"9c07dd5deb",
+"70e8a49509",
+"6215fba52a",
+"f1b9018473",
+"c6185ed366",
+"e3b0c44298",
+"ad6dcedbb0",
+"46c87d4b1c",
+"e3b0c44298",
 "e86a0a8da1",
 "e3b0c44298",
 "d871284f6d",
 "e3b0c44298",
-"bfd498b593"
+"46c87d4b1c"
 ],
 "symbols": [],
 "routes": []
@@ -764,5 +786,5 @@
 "routes": []
 }
 },
-"knowledge_after": null
+"knowledge_after": 1795210531.042469
 }

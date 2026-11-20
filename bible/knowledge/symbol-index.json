@@ -484,7 +484,8 @@
     "lld/tools/gate.md#failmsgs",
     "lld/tools/gate.md#index",
     "lld/tools/gate.md#main",
-    "lld/tools/gate.md#summary"
+    "lld/tools/gate.md#summary",
+    "progress.md#final-pass-session-3"
    ]
   },
   "symbol:tools/gate.py#read": {
@@ -511,7 +512,8 @@
     "lld/tools/gate.md#index",
     "lld/tools/gate.md#main",
     "lld/tools/gate.md#readpath",
-    "lld/tools/gate.md#summary"
+    "lld/tools/gate.md#summary",
+    "progress.md#final-pass-session-3"
    ]
   },
   "symbol:tools/gate.py#count_tests": {
@@ -543,7 +545,8 @@
     "lld/tools/plan.md#call-graph",
     "lld/tools/plan.md#module-level-code",
     "lld/tools/plan.md#plan",
-    "lld/tools/plan.md#scancomponent_dir"
+    "lld/tools/plan.md#scancomponent_dir",
+    "progress.md#final-pass-session-3"
    ]
   },
   "symbol:tools/gate.py#check": {
@@ -577,6 +580,7 @@
     "lld/tools/gate.md#main",
     "lld/tools/gate.md#readpath",
     "lld/tools/gate.md#summary",
+    "progress.md#final-pass-session-3",
     "progress.md#quality-gate-pass-11",
     "progress.md#reader-test"
    ]

@@ -46,6 +46,7 @@ Packets 1 to 6 done in session 1 (the budget of 6 per chat). `next.py` printed `
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-11-21 | end of session 1, mid-run | 6 of 7 | 21 of 21 | 17 of 17 | 338 of 338 | GAPS: `tools/fanout.sh` page, 13 required pages and the mind map still to write |
 | 2026-11-21 | session 2, after pass 9 | 7 of 7 | 21 of 21 | 17 of 17 | 1133 of 1133 | PASS (depth deep) |
+| 2026-11-21 | session 3, final pass, after inventory and delta | 7 of 7 | 21 of 21 | 17 of 17 | 1134 of 1134 | PASS (depth deep) |
 
 ## Quality gate (pass 11)
 
@@ -56,6 +57,21 @@ Packets 1 to 6 done in session 1 (the budget of 6 per chat). `next.py` printed `
 | 4 Diagram audit | 30 diagrams. A script in the scratchpad (not part of the output) checked the pre-flight list of `mermaid-syntax.md` for flowcharts, sequence diagrams and mind maps: 0 problems. No renderer was available, so the diagrams were checked by reading only. No deployment diagram: nothing is deployed (stated in `hld/02-architecture.md`); the pipeline diagram stands in for it. No module map (fewer than 10 modules), no lifecycle (no record has a status), no class diagram (no classes besides tests) |
 | 5 Evidence and safety | Every 10th row of `ledger/citations.tsv` sampled (113 rows): all support the sentence. Sweeping words in README, HLD and rules were narrowed or tied to a cited search. Search for `password`, `secret`, `token`, `api_key`, `BEGIN`, `Authorization:` in the output: hits are only the names of two repository secrets and prose about missing authentication, never a value. No e-mail address or personal data copied. Text addressed to an assistant is in `run-notes.md` |
 | 6 Knowledge base | `knowledge.py` ran after the last page change; one name per thing (config keys all under `config:`); `AGENT-CONTEXT.md` follows the template, 1,500 words, cited |
+
+### Final pass (session 3)
+
+Steps run in order: `next.py --new-session` reported a delta (the only file that differed from the baseline was `.agent/PROMPT.md`, the run harness's task file; no source file and no function changed); `delta.py --apply` recorded it (0 citations moved, 0 marked, 0 work items); `next.py` then asked for a knowledge rebuild; `inventory.py`, `coverage.py` and `knowledge.py` were re-run on the final pages.
+
+| Check | Result of the final pass |
+| --- | --- |
+| 1 Coverage gate | PASS at depth deep, same figures as above (files 7 of 7, symbols 21 of 21, cards 17 of 17, citations 1134 of 1134, branch lines 49 of 49, calls 9 of 9, front matter 11 of 11) |
+| 2 Depth audit | Re-read against the code: every card of `tools/gate.py` (`fail`, `read`, `count_tests`, `check`, `main`) and the cards of `line_total`, `order_total`, `validate`, `settle` in `orders.py`. Branches, compared values, messages, outbound call and error paths match the code; no change needed. Not re-read: `catalog.py` and `plan.py` cards (read and checked in session 2) |
+| 3 Reader test | The 15 answers below still hold; every page they name exists |
+| 4 Diagram audit | No page with a diagram changed since the last audit; still no renderer, so checked by reading only |
+| 5 Evidence and safety | Searches re-run by hand and agree with the sweep table: no import outside the standard library and the repository's own modules; no `socket`, `listen`, `serve` or `flask` in `*.py` or `*.sh`; the five functions without a caller still have none; `decisions` occurs once (`tools/gate.py:60`). Search of the output for `password`, `passwd`, `secret`, `token`, `api_key`, `apikey`, `BEGIN`, `Authorization:` and credentials in URLs: hits are only the names of two repository secrets and prose about missing authentication, never a value. No personal data |
+| 6 Knowledge base | `knowledge.py` re-run after the delta: 87 nodes, 144 edges, 220 chunks, 1 unresolved call; `AGENT-CONTEXT.md` is 1,563 words, under the 3,000 limit; no new names, so no second spelling |
+
+`README.md` stays at DRAFT: the skill's Finish step says to leave it at DRAFT until `verifying-a-codebase-analysis` has checked the bible. Q-001 to Q-003 remain open for the team.
 
 ## Reader test
 
@@ -113,7 +129,7 @@ Last question number used: Q-003.
 
 ## Next step
 
-The bible is complete at depth deep and `coverage.py` passes. Remaining for a person: run `verifying-a-codebase-analysis` in a new chat, on a different model if one is available; answer Q-001 to Q-003 in `reference/open-questions.md`; leave `README.md` at DRAFT until then.
+The bible is complete at depth deep and `coverage.py` passes. Remaining for a person: run `verifying-a-codebase-analysis` in a new chat, on a different model if one is available; answer Q-001 to Q-003 in `reference/open-questions.md`; leave `README.md` at DRAFT until then (the skill does not allow leaving DRAFT before verification; session 3 confirmed the gate again and kept it).
 
 <!-- cites components/catalog/catalog.py@1e15fdaab1fa3c720d99a864abb4cac9c8259421 -->
 

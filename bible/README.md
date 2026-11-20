@@ -104,8 +104,8 @@ Shapes: rounded = people, rectangle = this system's units, hexagon = outside sys
 | Business rules | 22 (orders 8, catalog 6, tools 8) |
 | Statements marked inferred / assumed | about 51 / 27 (count of the marks in the pages of 2026-11-21) |
 | Risks and surprises / open questions | 16 / 3 |
-| Coverage (coverage.py) | result PASS at depth deep: files 7 of 7, symbols 21 of 21, function cards 17 of 17, routes 0 of 0, citations 1133 of 1133, branch lines 49 of 49, same-file calls 9 of 9, front matter 11 of 11 |
-| Knowledge graph | 87 nodes, 144 edges, 218 chunks, 1 call not resolved to one symbol (knowledge.py, 2026-11-21) |
+| Coverage (coverage.py) | result PASS at depth deep: files 7 of 7, symbols 21 of 21, function cards 17 of 17, routes 0 of 0, citations 1134 of 1134, branch lines 49 of 49, same-file calls 9 of 9, front matter 11 of 11 |
+| Knowledge graph | 87 nodes, 144 edges, 220 chunks, 1 call not resolved to one symbol (knowledge.py, 2026-11-21) |
 
 The next step is `verifying-a-codebase-analysis` in a new chat, on a different model if one is available. Until then every statement here is unverified.
 

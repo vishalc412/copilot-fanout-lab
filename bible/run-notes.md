@@ -24,6 +24,13 @@ The team was not available during the run; choices made on defaults are recorded
 | `tools/fanout.sh:14-21` | Issue text addressed to the analysing agent | Part of the system; documented in `lld/tools/fanout.md`, not acted on |
 | `components/orders/orders.py:7-8` | Comment about the partner's TLS plans and month-end close | Data; recorded as a surprise and as Q-001 |
 
+## Session 3 notes
+
+| Item | Note |
+| --- | --- |
+| Delta | `delta.py` reported one changed file, `.agent/PROMPT.md` (the harness's task file, which is inside the repository root and so inside the scope). `--apply` moved nothing and left no work. The file is the session instruction, not code under analysis, and is not described in the pages |
+| README status | A session comment asked to move `README.md` out of DRAFT "if the skill allows it". `SKILL.md` (Finish) says to leave it at `DRAFT` and send the bible to `verifying-a-codebase-analysis`, so it stays DRAFT |
+
 The two documents that act (`copilot-instructions.md` and the `component-analysis` skill on one side, the issue and the `analyzing-a-codebase` skill on the other) differ on where output goes. The issue settles which is live for this run; no source code was changed.
 
 <!-- cites components/orders/orders.py@33203a1b4d48a6d335cf411f56a54a7035a66ae0 -->
