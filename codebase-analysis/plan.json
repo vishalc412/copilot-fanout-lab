@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "passes": {
+    "1": "inventory: every function, what it does, who calls it",
+    "2": "risks: classify every http:// site as CHANGE or KEEP; ask when unsure",
+    "3": "tests: add unit tests for untested functions, run them, report"
+  },
+  "components": {
+    "catalog": {
+      "sources": [
+        "components/catalog/catalog.py"
+      ],
+      "tests": [
+        "components/catalog/test_catalog.py"
+      ],
+      "functions": [
+        {
+          "name": "get_product",
+          "at": "components/catalog/catalog.py:15"
+        },
+        {
+          "name": "price_of",
+          "at": "components/catalog/catalog.py:20"
+        },
+        {
+          "name": "in_stock",
+          "at": "components/catalog/catalog.py:27"
+        },
+        {
+          "name": "image_url",
+          "at": "components/catalog/catalog.py:32"
+        },
+        {
+          "name": "fetch_supplier_feed",
+          "at": "components/catalog/catalog.py:36"
+        },
+        {
+          "name": "apply_feed",
+          "at": "components/catalog/catalog.py:42"
+        }
+      ],
+      "http_sites": [
+        {
+          "url": "http://feeds.supplier-one.example.com/v2/products.json",
+          "at": "components/catalog/catalog.py:5"
+        }
+      ]
+    },
+    "orders": {
+      "sources": [
+        "components/orders/orders.py"
+      ],
+      "tests": [
+        "components/orders/test_orders.py"
+      ],
+      "functions": [
+        {
+          "name": "line_total",
+          "at": "components/orders/orders.py:19"
+        },
+        {
+          "name": "order_total",
+          "at": "components/orders/orders.py:23"
+        },
+        {
+          "name": "validate",
+          "at": "components/orders/orders.py:35"
+        },
+        {
+          "name": "settle",
+          "at": "components/orders/orders.py:45"
+        }
+      ],
+      "http_sites": [
+        {
+          "url": "http://partner-legacy.internal/settle",
+          "at": "components/orders/orders.py:9"
+        },
+        {
+          "url": "http://localhost:8099/settle",
+          "at": "components/orders/orders.py:12"
+        }
+      ]
+    }
+  }
+}

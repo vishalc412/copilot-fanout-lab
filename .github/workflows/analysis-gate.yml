@@ -1,0 +1,41 @@
+name: Analysis gate
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: One component per PR, inside its write scope
+        id: scope
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git diff --name-only "$BASE"...HEAD > changed.txt
+          cat changed.txt
+          python - <<'PY'
+          import os, re, sys
+          files = [f for f in open("changed.txt").read().split() if f]
+          comps, bad = set(), []
+          for f in files:
+              m = re.match(r"codebase-analysis/components/([^/]+)/", f) or re.match(r"components/([^/]+)/test_[^/]+\.py$", f)
+              if m:
+                  comps.add(m.group(1))
+              else:
+                  bad.append(f)
+          if bad:
+              print("Outside the write scope:", *bad, sep="\n  "); sys.exit(1)
+          if len(comps) != 1:
+              print("Expected exactly one component, got:", sorted(comps)); sys.exit(1)
+          with open(os.environ["GITHUB_OUTPUT"], "a") as out:
+              out.write(f"component={comps.pop()}\n")
+          PY
+      - name: Gate for every pass in status.json
+        run: python tools/gate.py "${{ steps.scope.outputs.component }}"
