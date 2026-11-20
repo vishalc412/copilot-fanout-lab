@@ -1,9 +1,6 @@
 name: Analysis gate
 on:
   pull_request:
-    paths:
-      - "codebase-analysis/components/**"
-      - "components/**/test_*.py"
 permissions:
   contents: read
 jobs:
@@ -28,6 +25,8 @@ jobs:
           files = [f for f in open("changed.txt").read().split() if f]
           comps, bad = set(), []
           for f in files:
+              if f.startswith("bible/"):
+                  comps.add("bible"); continue
               m = re.match(r"codebase-analysis/components/([a-z0-9_-]+)/", f) or re.match(r"components/([a-z0-9_-]+)/test_[A-Za-z0-9_]+\.py$", f)
               if m:
                   comps.add(m.group(1))
@@ -41,12 +40,14 @@ jobs:
           base_plan = json.loads(subprocess.run(["git", "show", os.environ["BASE"] + ":codebase-analysis/plan.json"],
                                                 capture_output=True, text=True, check=True).stdout)
           comp = comps.pop()
-          if comp not in base_plan["components"]:
+          if comp != "bible" and comp not in base_plan["components"]:
               print("Component not in the base branch plan.json:", comp); sys.exit(1)
           with open(os.environ["GITHUB_OUTPUT"], "a") as out:
               out.write(f"component={comp}\n")
           PY
       - name: Gate for every pass in status.json
+        # The book track (bible/) is gated by toolkit-analysis.yml's coverage gate.
+        if: steps.scope.outputs.component != 'bible'
         env:
           COMPONENT: ${{ steps.scope.outputs.component }}
         run: python tools/gate.py "$COMPONENT"
