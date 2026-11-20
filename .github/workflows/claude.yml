@@ -6,11 +6,16 @@ on:
     types: [created]
 jobs:
   claude:
-    # Only people with write access can wake the agent from a comment.
+    # Outsiders (NONE, CONTRIBUTOR, FIRST_TIME_CONTRIBUTOR) can't wake the agent.
+    # claude-code-action also checks that the actor has write access.
     if: >-
       contains(github.event.comment.body, '@claude') &&
       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association)
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Write scopes let the action push its commits and comment. It also reads
+    # issue and PR text that outsiders may have written: keep this repo's
+    # branch protection on main so nothing it pushes lands without review.
     permissions:
       contents: write
       pull-requests: write
@@ -31,6 +36,7 @@ jobs:
         if: steps.secret.outputs.ok == 'true'
         with:
           fetch-depth: 1
+          persist-credentials: false
       - uses: anthropics/claude-code-action@v1
         if: steps.secret.outputs.ok == 'true'
         with:
