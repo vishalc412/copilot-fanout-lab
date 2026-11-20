@@ -25,7 +25,7 @@ jobs:
           files = [f for f in open("changed.txt").read().split() if f]
           comps, bad = set(), []
           for f in files:
-              m = re.match(r"codebase-analysis/components/([^/]+)/", f) or re.match(r"components/([^/]+)/test_[^/]+\.py$", f)
+              m = re.match(r"codebase-analysis/components/([a-z0-9_-]+)/", f) or re.match(r"components/([a-z0-9_-]+)/test_[A-Za-z0-9_]+\.py$", f)
               if m:
                   comps.add(m.group(1))
               else:
@@ -34,8 +34,16 @@ jobs:
               print("Outside the write scope:", *bad, sep="\n  "); sys.exit(1)
           if len(comps) != 1:
               print("Expected exactly one component, got:", sorted(comps)); sys.exit(1)
+          import json, subprocess
+          base_plan = json.loads(subprocess.run(["git", "show", os.environ["BASE"] + ":codebase-analysis/plan.json"],
+                                                capture_output=True, text=True, check=True).stdout)
+          comp = comps.pop()
+          if comp not in base_plan["components"]:
+              print("Component not in the base branch plan.json:", comp); sys.exit(1)
           with open(os.environ["GITHUB_OUTPUT"], "a") as out:
-              out.write(f"component={comps.pop()}\n")
+              out.write(f"component={comp}\n")
           PY
       - name: Gate for every pass in status.json
-        run: python tools/gate.py "${{ steps.scope.outputs.component }}"
+        env:
+          COMPONENT: ${{ steps.scope.outputs.component }}
+        run: python tools/gate.py "$COMPONENT"
