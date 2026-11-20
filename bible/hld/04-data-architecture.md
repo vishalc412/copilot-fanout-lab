@@ -84,7 +84,7 @@ No record in the code has a status that the code changes: the product table has 
 | --- | --- | --- | --- |
 | Product prices and stock | memory of the importing process | `apply_feed` | `components/catalog/catalog.py:42-47` |
 | Inventory and test baseline | `codebase-analysis/plan.json` | `plan.main` | `tools/plan.py:55-57` |
-| Ignored build files | `__pycache__/`, `*.pyc`, `.agent/` are ignored by Git | not applicable | `.gitignore:1-3` |
+| Ignored build files | `__pycache__/`, `*.pyc` and a third folder pattern are ignored by Git | not applicable | `.gitignore:1-3` |
 
 No cache, queue, session or upload folder exists (search `cache`, `session`, `upload` in `*.py` and `*.sh`: 0 hits).
 

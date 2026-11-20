@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-21T03:06:29",
+ "generated": "2026-11-21T05:01:32",
  "tool": "analyzing-a-codebase/scripts/knowledge.py 1.5.0",
  "stats": {
-  "nodes": 87,
+  "nodes": 86,
   "edges": 144,
   "chunks": 220,
   "calls_unresolved": 1,
   "by_node_type": {
-   "File": 21,
+   "File": 20,
    "Function": 17,
    "Class": 2,
    "Method": 2,
@@ -109,15 +109,6 @@
    "id": "external:Supplier product feed",
    "type": "External",
    "name": "Supplier product feed"
-  },
-  {
-   "id": "file:.agent/PROMPT.md",
-   "type": "File",
-   "name": "PROMPT.md",
-   "path": ".agent/PROMPT.md",
-   "kind": "doc",
-   "lang": "",
-   "lines": 81
   },
   {
    "id": "file:.git",

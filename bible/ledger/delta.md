@@ -1,10 +1,10 @@
 # Delta since the analysis last matched the code
 
-Baseline recorded 2026-11-21T03:05:31 (bible). Applied on 2026-11-21T03:05:31 (bible).
+Baseline recorded 2026-11-21T04:00:36 (bible). Report only, nothing changed on 2026-11-21T04:00:36 (bible).
 
 | Measure | Count |
 | --- | --- |
-| Files changed | 1 |
+| Files changed | 0 |
 | Files added | 0 |
 | Files removed | 0 |
 | Files renamed | 0 |
@@ -13,17 +13,13 @@ Baseline recorded 2026-11-21T03:05:31 (bible). Applied on 2026-11-21T03:05:31 (b
 | Functions removed | 0 |
 | Functions only moved | 0 |
 | Routes added, removed | 0, 0 |
-| Citations moved to new lines | 0 |
-| Card citations moved with their code (found by stamp) | 0 |
-| Citations marked for a recheck | 0 |
+| Citations that will move to new lines | 0 |
+| Card citations that will move with their code (found by stamp) | 0 |
+| Citations that will be marked for a recheck | 0 |
 | Work items open | 0 |
 
-## Changed files
-
-| File | Changed | Added | Removed | Only moved |
-| --- | --- | --- | --- | --- |
-| `.agent/PROMPT.md` | - | - | - | 0 |
-
 ## Work for the analysis
+
+Run `delta.py --apply` to move the citations and record this work; next.py then hands it out.
 
 None.

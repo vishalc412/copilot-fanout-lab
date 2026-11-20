@@ -27,7 +27,7 @@ Every constant, variable and setting the code reads. No secret value is written 
 | `ARGS`, `S` | Shared arguments and script folder for the bible scripts in CI | `.github/workflows/toolkit-analysis.yml:8-10` | no |
 | `ANTHROPIC_API_KEY`, `CLAUDE_CODE_OAUTH_TOKEN` | Repository secrets that switch on the Claude action; names only, values are never in the repository | `.github/workflows/claude.yml:29-31`, `.github/workflows/claude.yml:43-44` | yes (names only here) |
 | `permissions` of each workflow | `contents: write` for `plan.yml` and `claude.yml`, `contents: read` for the others | `.github/workflows/plan.yml:4-5`, `.github/workflows/claude.yml:19-23`, `.github/workflows/analysis-gate.yml:4-5`, `.github/workflows/toolkit-analysis.yml:6-7`, `.github/workflows/copilot-setup-steps.yml:11-12` | no |
-| `.gitignore` | Ignores `__pycache__/`, `*.pyc` and `.agent/` | `.gitignore:1-3` | no |
+| `.gitignore` | Ignores `__pycache__/`, `*.pyc` and a third folder pattern | `.gitignore:1-3` | no |
 
 All addresses are plain constants: to change one, edit the source. There are no profiles, no configuration server and no `.env` file (listing of the repository: none).
 

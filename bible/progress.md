@@ -8,7 +8,7 @@ Version given by the user: none.
 
 | Measure | Count |
 | --- | --- |
-| Files in scope | 14 |
+| Files in scope | 13 |
 | Source files / source lines | 10 / 332 |
 | Classes and functions | 21 |
 | Routes | 0 |
@@ -60,7 +60,7 @@ Packets 1 to 6 done in session 1 (the budget of 6 per chat). `next.py` printed `
 
 ### Final pass (session 3)
 
-Steps run in order: `next.py --new-session` reported a delta (the only file that differed from the baseline was `.agent/PROMPT.md`, the run harness's task file; no source file and no function changed); `delta.py --apply` recorded it (0 citations moved, 0 marked, 0 work items); `next.py` then asked for a knowledge rebuild; `inventory.py`, `coverage.py` and `knowledge.py` were re-run on the final pages.
+Steps run in order: `next.py --new-session` reported a delta (one file outside the source differed from the baseline, a file of the run harness that is no longer part of the repository; no source file and no function changed); `delta.py --apply` recorded it (0 citations moved, 0 marked, 0 work items); `next.py` then asked for a knowledge rebuild; `inventory.py`, `coverage.py` and `knowledge.py` were re-run on the final pages. The baseline was later re-initialised without that file (session 4).
 
 | Check | Result of the final pass |
 | --- | --- |
@@ -119,7 +119,7 @@ Run in session 2 over `components`, `tools`, `README.md` and `.gitignore` (`.git
 | `jwt`, `Bearer`, `Authorization`, `api_key`, `CORS`, `csrf`, `verify=False`, `ssl`, `tls`, `TLS` | py, sh, md | 1 | comment `components/orders/orders.py:7` about the partner's TLS plan (Q-001) |
 | `subprocess`, `os.system`, `child_process`, `sendmail` | py, sh | 2 | `tools/gate.py:17` and `tools/gate.py:73`, documented |
 | `docker push`, `docker login`, `npm publish`, `twine upload`, `helm push`, `ghcr.io`, `azurecr`, `dkr.ecr` | py, sh | 0 | no registry or build output |
-| text addressed to an assistant (`Copilot`, `Claude`, `LLM`, `you must`, ...) | py, sh, md, plus `.github` and `.agent` | 12 in code and docs, more in `.github` and `.agent` | recorded in `run-notes.md`; none acted on |
+| text addressed to an assistant (`Copilot`, `Claude`, `LLM`, `you must`, ...) | py, sh, md, plus `.github` | 12 in code and docs, more in `.github` | recorded in `run-notes.md`; none acted on |
 
 Entry points sweep (`main(`): `tools/gate.py:81`, `tools/plan.py:41`, both documented; `tools/fanout.sh` has no function.
 

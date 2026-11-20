@@ -1128,8 +1128,8 @@ index	doc	doc_line	cited_path	start	end	status	label
 1127	reference/risks-and-surprises.md	21	codebase-analysis/plan.json	76	85	ok	
 1128	reference/risks-and-surprises.md	22	components/orders/test_orders.py	7	8	ok	
 1129	reference/risks-and-surprises.md	22	components/catalog/test_catalog.py	7	8	ok	
-1130	run-notes.md	21	.github/copilot-instructions.md	3	4	ok	
-1131	run-notes.md	22	.github/skills/component-analysis/SKILL.md	16	19	ok	
-1132	run-notes.md	23	.github/copilot-instructions.md	7	7	ok	
-1133	run-notes.md	24	tools/fanout.sh	14	21	ok	
-1134	run-notes.md	25	components/orders/orders.py	7	8	ok	
+1130	run-notes.md	20	.github/copilot-instructions.md	3	4	ok	
+1131	run-notes.md	21	.github/skills/component-analysis/SKILL.md	16	19	ok	
+1132	run-notes.md	22	.github/copilot-instructions.md	7	7	ok	
+1133	run-notes.md	23	tools/fanout.sh	14	21	ok	
+1134	run-notes.md	24	components/orders/orders.py	7	8	ok	

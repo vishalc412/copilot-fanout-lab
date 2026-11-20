@@ -6,7 +6,7 @@ Status: DRAFT, not yet verified.
 | --- | --- |
 | Depth | deep for all components |
 | Version given by the user | none |
-| Snapshot | 14 files in scope, 332 source lines, 2026-11-21 |
+| Snapshot | 13 files in scope, 332 source lines, 2026-11-21 |
 | Coverage | 100% files, 100% functions, 100% routes (none), 100% citations resolve (coverage.py, 2026-11-21) |
 | Produced with | a coding agent (Claude Sonnet 5.5) following the `analyzing-a-codebase` skill |
 | Diagrams | checked by reading only; no Mermaid renderer was available |

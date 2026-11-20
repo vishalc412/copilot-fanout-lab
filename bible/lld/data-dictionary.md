@@ -86,7 +86,7 @@ All sit in `codebase-analysis/components/<name>/`, are written by the analysing 
 
 ### `.gitignore`
 
-Three patterns: `__pycache__/`, `*.pyc` and `.agent/` (`.gitignore:1-3`). It controls what is committed, not what the code reads.
+Three patterns: `__pycache__/`, `*.pyc` and a third folder pattern (`.gitignore:1-3`). It controls what is committed, not what the code reads.
 
 ## Status and enum values
 

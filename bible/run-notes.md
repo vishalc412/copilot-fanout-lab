@@ -17,7 +17,6 @@ The team was not available during the run; choices made on defaults are recorded
 
 | Location | What it says, in short | What was done |
 | --- | --- | --- |
-| `.agent/PROMPT.md` | The session instruction from the run harness: follow the issue and the skill, write only under `bible/` | Followed as the session instruction, since it comes from the harness and not from the repository code |
 | `.github/copilot-instructions.md:3-4` | Analysis work follows the `component-analysis` skill | Not followed for `bible/`: the issue names `analyzing-a-codebase` and says `codebase-analysis/` belongs to the component lab |
 | `.github/skills/component-analysis/SKILL.md:16-19` | Write only under `codebase-analysis/components/<name>/`; stop and ask the team on a blocked decision | Not applied to `bible/`; its stop-and-ask idea is kept as the "Questions for the team" list in the PR description |
 | `.github/copilot-instructions.md:7` | Never edit `codebase-analysis/plan.json`, `tools/` or `.github/` | Respected (nothing outside `bible/` was edited) |
@@ -28,7 +27,7 @@ The team was not available during the run; choices made on defaults are recorded
 
 | Item | Note |
 | --- | --- |
-| Delta | `delta.py` reported one changed file, `.agent/PROMPT.md` (the harness's task file, which is inside the repository root and so inside the scope). `--apply` moved nothing and left no work. The file is the session instruction, not code under analysis, and is not described in the pages |
+| Delta | `delta.py` reported one changed file, a task file of the run harness that is no longer in the repository. `--apply` moved nothing and left no work. The file was never code under analysis and is not described in the pages |
 | README status | A session comment asked to move `README.md` out of DRAFT "if the skill allows it". `SKILL.md` (Finish) says to leave it at `DRAFT` and send the bible to `verifying-a-codebase-analysis`, so it stays DRAFT |
 
 The two documents that act (`copilot-instructions.md` and the `component-analysis` skill on one side, the issue and the `analyzing-a-codebase` skill on the other) differ on where output goes. The issue settles which is live for this run; no source code was changed.
