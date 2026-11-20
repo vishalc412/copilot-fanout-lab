@@ -28,7 +28,13 @@ def scan(component_dir):
             for lineno, line in enumerate(text.splitlines(), 1):
                 for match in HTTP.finditer(line):
                     http_sites.append({"url": match.group(1), "at": f"{rel}:{lineno}"})
-    return {"sources": sources, "tests": tests, "functions": functions, "http_sites": http_sites}
+    test_count = 0
+    for rel in tests:
+        for node in ast.walk(ast.parse((ROOT / rel).read_text())):
+            if isinstance(node, ast.FunctionDef) and node.name.startswith("test_"):
+                test_count += 1
+    return {"sources": sources, "tests": tests, "test_count": test_count,
+            "functions": functions, "http_sites": http_sites}
 
 
 def main():

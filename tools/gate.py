@@ -65,7 +65,8 @@ def check(component, n, plan, out):
             errors.append("tests-report.md missing")
         tests = sorted(p.relative_to(ROOT).as_posix()
                        for p in (ROOT / "components" / component).glob("test_*.py"))
-        before = count_tests(spec["tests"])
+        # Snapshot taken by the plan job; fall back to today's files for old plans.
+        before = spec.get("test_count", count_tests(spec["tests"]))
         now = count_tests(tests)
         if now <= before:
             errors.append(f"no new tests: {now} test functions, {before} at plan time")
