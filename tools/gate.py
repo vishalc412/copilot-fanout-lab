@@ -1,7 +1,8 @@
 """Per-component gate. Deterministic; runs in CI and can be run by the agent.
 
 usage: python tools/gate.py <component> [--pass N]
-Without --pass, checks every pass listed in the component's status.json.
+Without --pass, checks every pass listed in the component's status.json, and
+fails while status.json reports open questions (the component is blocked).
 
 Pass 1: inventory.md names every function in plan.json for the component.
 Pass 2: risks.md lists every http:// site (file:line) as CHANGE or KEEP.
@@ -93,6 +94,10 @@ def main():
         if not passes:
             return fail(["status.json missing or no passes_done"])
     errors = []
+    status = read(out / "status.json")
+    open_q = json.loads(status).get("open_questions", 0) if status else 0
+    if not args.n and open_q:
+        errors.append(f"blocked: {open_q} open question(s) waiting for the team (see the PR description)")
     for n in passes:
         errs = check(args.component, n, plan, out)
         print(f"{args.component} pass {n}: {'PASS' if not errs else 'FAIL'}")
