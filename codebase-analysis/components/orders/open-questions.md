@@ -1,6 +1,8 @@
 # orders: open questions
 
-Blocking pass 2 (risks). Both concern `components/orders/orders.py:9` (`http://partner-legacy.internal/settle`).
+All answered on 2026-11-23; answers are in `decisions.md`. Nothing is open.
+
+Originally blocking pass 2 (risks). Both concern `components/orders/orders.py:9` (`http://partner-legacy.internal/settle`).
 
 ## Q1. Has the settlement partner committed to a date or endpoint for TLS on `partner-legacy.internal`?
 - **Why it blocks:** The code says only that TLS is "coming soon" with no date. If the host does not serve https, changing the URL breaks every settlement. Nothing in the repo or plan.json can tell us the partner's plans.
