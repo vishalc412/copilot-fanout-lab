@@ -1,7 +1,8 @@
 """Per-component gate. Deterministic; runs in CI and can be run by the agent.
 
 usage: python tools/gate.py <component> [--pass N]
-Without --pass, checks every pass listed in the component's status.json.
+Without --pass, checks every pass listed in the component's status.json, and
+fails while status.json reports open questions (the component is blocked).
 
 Pass 1: inventory.md names every function in plan.json for the component.
 Pass 2: risks.md lists every http:// site (file:line) as CHANGE or KEEP.
@@ -64,7 +65,8 @@ def check(component, n, plan, out):
             errors.append("tests-report.md missing")
         tests = sorted(p.relative_to(ROOT).as_posix()
                        for p in (ROOT / "components" / component).glob("test_*.py"))
-        before = count_tests(spec["tests"])
+        # Snapshot taken by the plan job; fall back to today's files for old plans.
+        before = spec["test_count"] if "test_count" in spec else count_tests(spec["tests"])
         now = count_tests(tests)
         if now <= before:
             errors.append(f"no new tests: {now} test functions, {before} at plan time")
@@ -85,14 +87,25 @@ def main():
     if args.component not in plan["components"]:
         return fail([f"unknown component {args.component}"])
     out = ROOT / "codebase-analysis" / "components" / args.component
+    errors = []
     if args.n:
         passes = [args.n]
     else:
-        status = read(out / "status.json")
-        passes = json.loads(status).get("passes_done", []) if status else []
+        raw = read(out / "status.json")
+        try:
+            status = json.loads(raw) if raw else {}
+        except json.JSONDecodeError as e:
+            return fail([f"status.json is not valid JSON: {e}"])
+        if not isinstance(status, dict):
+            return fail(["status.json must be a JSON object"])
+        passes = status.get("passes_done", [])
         if not passes:
             return fail(["status.json missing or no passes_done"])
-    errors = []
+        open_q = status.get("open_questions", 0)
+        if not isinstance(open_q, int) or isinstance(open_q, bool) or open_q < 0:
+            errors.append(f"status.json open_questions must be a non-negative integer, got {open_q!r}")
+        elif open_q > 0:
+            errors.append(f"blocked: {open_q} open question(s) waiting for the team (see the PR description)")
     for n in passes:
         errs = check(args.component, n, plan, out)
         print(f"{args.component} pass {n}: {'PASS' if not errs else 'FAIL'}")
