@@ -4,13 +4,13 @@ Each section says what the system does in plain words. The system is small, so m
 
 ## Authentication and authorisation
 
-The Python code authenticates nothing: no function checks who calls it, and the two outbound HTTP calls send no authentication header (`components/orders/orders.py:49`, `components/catalog/catalog.py:38`; search `Authorization`, `Bearer`, `jwt`, `api_key` in `*.py` and `*.sh`: 0 hits). The access control found is outside the code (search `Authorization`, `Bearer`, `jwt`, `api_key` in `*.py` and `*.sh`: 0 hits): the `claude.yml` workflow reacts only to comments by an owner, member or collaborator (`.github/workflows/claude.yml:11-13`), and `fanout.sh` relies on the operator's own `gh` login (assumed).
+The Python code authenticates nothing: no function checks who calls it, and the two outbound HTTP calls send no authentication header (`components/orders/orders.py:49`, `components/catalog/catalog.py:38`; search `Authorization`, `Bearer`, `jwt`, `api_key` in `*.py` and `*.sh`: 0 hits). The access control found is outside the code: the `claude.yml` workflow reacts only to comments by an owner, member or collaborator (`.github/workflows/claude.yml:11-13`), and `fanout.sh` relies on the operator's own `gh` login (assumed).
 
 Consistency: absent in the code.
 
 ## Secrets
 
-No secret appears in the code, and none is read from the environment by it. The `claude.yml` workflow reads two repository secrets by name, `ANTHROPIC_API_KEY` and `CLAUDE_CODE_OAUTH_TOKEN`, and runs the Claude action only when one of them is set (`.github/workflows/claude.yml:29-34`, `.github/workflows/claude.yml:40-44`). Values are never written in this analysis.
+No secret appears in the code, and none is read from the environment by it. The `claude.yml` workflow reads two repository secrets by name, `ANTHROPIC_API_KEY` and `CLAUDE_CODE_OAUTH_TOKEN`, and runs the Claude action only when one of them is set (`.github/workflows/claude.yml:29-36`, `.github/workflows/claude.yml:42-46`). Values are never written in this analysis.
 
 Consistency: same everywhere (nothing stored in the repository).
 
@@ -40,7 +40,7 @@ Consistency: absent.
 
 ## Logging, metrics and tracing
 
-No logging, metrics or tracing in the code (search `logging`, `print(` in `components`: 0 hits; `print` in `tools`: the result lines of `gate.py` and `plan.py`, `tools/gate.py:25`, `tools/gate.py:111`, `tools/plan.py:58`). There is no health check or dashboard. The Claude workflow echoes that a mention reached Actions (`.github/workflows/claude.yml:25-26`).
+No logging, metrics or tracing in the code (search `logging`, `print(` in `components`: 0 hits; `print` in `tools`: the result lines of `gate.py` and `plan.py`, `tools/gate.py:25`, `tools/gate.py:111`, `tools/plan.py:58`). There is no health check or dashboard. The Claude workflow echoes that a mention reached Actions (`.github/workflows/claude.yml:25-28`).
 
 Consistency: absent in the library; printed result lines only in the tools.
 
@@ -52,13 +52,13 @@ Consistency: same everywhere (CI only).
 
 ## Testing
 
-Two unittest files, one test each, `line_total("SKU-3", 2)` and `price_of("SKU-1")` (`components/orders/test_orders.py:7-8`, `components/catalog/test_catalog.py:7-8`). No test touches discounts, validation, settlement, the feed or any of the tools (inferred: only those calls appear in the two test files). The gate's pass 3 runs the whole suite with `python -m unittest discover` (`tools/gate.py:73-75`), and the repository instructions give the same command (`.github/copilot-instructions.md:5-6`). No network is used by the tests (inferred: `settle` and `fetch_supplier_feed` are not called by them).
+Two unittest files, one test each, `line_total("SKU-3", 2)` and `price_of("SKU-1")` (`components/orders/test_orders.py:7-8`, `components/catalog/test_catalog.py:7-8`). No test touches discounts, validation, settlement, the feed or any of the tools (inferred: only those calls appear in the two test files). The gate's pass 3 runs the whole suite with `python -m unittest discover` (`tools/gate.py:73-75`), and the repository instructions give the same command (`.github/copilot-instructions.md:15-16`). No network is used by the tests (inferred: `settle` and `fetch_supplier_feed` are not called by them).
 
 Consistency: same everywhere (one-test files in each component, none in `tools`).
 
 ## Dependencies
 
-No third-party Python package is used: every import is standard library or a repository module (imports at `components/orders/orders.py:2-5`, `components/catalog/catalog.py:2-3`, `tools/gate.py:13-18`, `tools/plan.py:8-15`). External programs: `gh` and `python3` for `fanout.sh` (`tools/fanout.sh:9-10`). CI uses four GitHub Actions at fixed major versions (`.github/workflows/toolkit-analysis.yml:15-16`, `.github/workflows/toolkit-analysis.yml:28`, `.github/workflows/claude.yml:40`).
+No third-party Python package is used: every import is standard library or a repository module (imports at `components/orders/orders.py:2-5`, `components/catalog/catalog.py:2-3`, `tools/gate.py:13-18`, `tools/plan.py:8-15`). External programs: `gh` and `python3` for `fanout.sh` (`tools/fanout.sh:9-10`). CI uses four GitHub Actions at fixed major versions (`.github/workflows/toolkit-analysis.yml:15-16`, `.github/workflows/toolkit-analysis.yml:28`, `.github/workflows/claude.yml:42`).
 
 Consistency: same everywhere.
 

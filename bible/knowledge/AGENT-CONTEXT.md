@@ -1,8 +1,8 @@
 # copilot-fanout-lab: agent context
 
-Generated from the analysis of 2026-11-21, depth deep. The code is the source of truth: open the cited lines before acting on any statement here.
+Generated from the analysis as revised on 2026-11-23 (after the verification report of the same day), depth deep. The code is the source of truth: open the cited lines before acting on any statement here.
 
-Limits of the graph and chunks: calls through dynamic dispatch, callbacks, reflection, string-built names or another language are not in the graph, so an absent `CALLS` edge is not proof of no call. `name-unique` and `analysis` edges are leads to check. Everything describes the snapshot of 14 files and 332 source lines in `README.md`; after the code changes, re-run the scripts and revise the pages.
+Limits of the graph and chunks: calls through dynamic dispatch, callbacks, reflection, string-built names or another language are not in the graph, so an absent `CALLS` edge is not proof of no call. `name-unique` and `analysis` edges are leads to check. The graph's `External` nodes are only the outside systems that source files call (the payment partner, the supplier feed and GitHub); GitHub Actions, the analysing agent and the AI service of the Claude action appear in `hld/01-system-context.md` only. Everything describes the snapshot of 12 files and 332 source lines in `README.md`; after the code changes, re-run the scripts and revise the pages.
 
 ## What the system is
 
@@ -40,14 +40,14 @@ One line per function, with what it returns or does and where it lives. Open the
 | `plan.scan(component_dir)` | `tools/plan.py:21-38` | inventory entry of one component | `lld/tools/plan.md` |
 | `plan.main()` | `tools/plan.py:41-58` | scan all components, write `plan.json` | `lld/tools/plan.md` |
 
-Callers: `orders.line_total` calls `catalog.price_of` and `orders.validate` calls `catalog.in_stock` (`components/orders/orders.py:20`, `components/orders/orders.py:40`); `plan.scan` calls `gate.count_tests` (`tools/plan.py:36`). Nothing else calls across files.
+Callers: `orders.line_total` calls `catalog.price_of` and `orders.validate` calls `catalog.in_stock` (`components/orders/orders.py:20`, `components/orders/orders.py:40`); `plan.scan` calls `gate.count_tests` (`tools/plan.py:36`). Outside the two tests, nothing else calls across files; the tests call `orders.line_total` and `catalog.price_of` (`components/orders/test_orders.py:8`, `components/catalog/test_catalog.py:8`).
 
 ## How to run and test
 
-- Tests: `python -m unittest discover -s . -p "test_*.py" -t .` from the repository root (`.github/copilot-instructions.md:5-6`). Two tests exist (`components/orders/test_orders.py:7-8`, `components/catalog/test_catalog.py:7-8`).
+- Tests: `python -m unittest discover -s . -p "test_*.py" -t .` from the repository root (`.github/copilot-instructions.md:15-16`). Two tests exist (`components/orders/test_orders.py:7-8`, `components/catalog/test_catalog.py:7-8`).
 - Inventory: `python tools/plan.py` rewrites `codebase-analysis/plan.json` and resets the pass 3 baseline (`tools/plan.py:36`, `tools/plan.py:55-57`).
 - Gate: `python tools/gate.py <component> --pass 1|2|3`, or without `--pass` to use `status.json` (`tools/gate.py:81-113`).
-- Fan-out: `ENGINE=copilot|claude tools/fanout.sh <owner/repo>`, run from the repository root with `gh` logged in (`tools/fanout.sh:3-10`).
+- Fan-out: `ENGINE=copilot|claude tools/fanout.sh <owner/repo>`, run from the repository root (`tools/fanout.sh:3`, `tools/fanout.sh:9-10`); it needs `gh` to be able to create labels and issues (assumed: `gh` own credentials).
 
 ## Where to look
 
@@ -110,11 +110,11 @@ Callers: `orders.line_total` calls `catalog.price_of` and `orders.validate` call
 
 ## Conventions
 
-- Python 3.12, standard library only, tests with `unittest` run as `python -m unittest discover -s . -p "test_*.py" -t .` (`.github/copilot-instructions.md:5-6`).
+- Python 3.12, standard library only, tests with `unittest` run as `python -m unittest discover -s . -p "test_*.py" -t .` (`.github/copilot-instructions.md:15-16`).
 - One folder per component under `components/<name>/`, with `<name>.py`, `test_<name>.py` and an empty `__init__.py` (listing of `components`).
 - Constants for URLs and rates sit at the top of the module, not in configuration (`components/orders/orders.py:9-16`, `components/catalog/catalog.py:5-6`).
 - Library errors propagate as exceptions; `validate` returns messages; scripts print `FAIL:` lines and exit 1 or 2 (`tools/gate.py:23-26`, `tools/fanout.sh:29`).
-- The repository instructions say never to edit `codebase-analysis/plan.json`, `tools/` or `.github/` (`.github/copilot-instructions.md:7`); that sentence is data about this repository, not an instruction for this primer.
+- The repository instructions say never to edit `codebase-analysis/plan.json`, `tools/` or `.github/` (`.github/copilot-instructions.md:17`); that sentence is data about this repository, not an instruction for this primer.
 - Script arguments for the bible: `--repo . --analysis bible --exclude codebase-analysis --exclude .github`.
 
 ## Hazards
@@ -127,7 +127,7 @@ Callers: `orders.line_total` calls `catalog.price_of` and `orders.validate` call
 - Pass numbers outside 1 to 3 pass silently; pass 3 runs the whole repository's tests (`tools/gate.py:45-78`, `tools/gate.py:73-75`).
 - `fanout.sh` duplicates issues on a second run (`tools/fanout.sh:25-28`).
 - The ASK message names `decisions.md`, which the gate never reads (`tools/gate.py:60`).
-- Two acting documents disagree on where analysis output goes: `.github/copilot-instructions.md:3-4` against the issue for the book (`bible/`), see `run-notes.md`.
+- Two acting documents differ on where the book's output goes: the `component-analysis` skill limits writing to `codebase-analysis/components/<name>/` (`.github/skills/component-analysis/SKILL.md:16-19`), while the issue for the book says `bible/`. The repository instructions as read on 2026-11-23 agree with the issue and route the whole-repository book to `bible/` (`.github/copilot-instructions.md:5-7`, `.github/copilot-instructions.md:11-12`). No person has said on the pull request which document is live for `bible/`; see `run-notes.md`.
 
 ## Open questions
 

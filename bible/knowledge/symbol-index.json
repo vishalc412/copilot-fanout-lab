@@ -57,6 +57,7 @@
     "hld/03-integrations.md#inbound-interfaces",
     "hld/04-data-architecture.md#stores",
     "hld/05-key-flows.md#1-price-an-order",
+    "hld/05-key-flows.md#key-flows",
     "hld/06-cross-cutting.md#testing",
     "knowledge/AGENT-CONTEXT.md#components",
     "knowledge/AGENT-CONTEXT.md#function-index",
@@ -72,8 +73,7 @@
     "lld/catalog/catalog.md#get_productsku",
     "lld/catalog/catalog.md#index",
     "lld/catalog/catalog.md#price_ofsku",
-    "lld/catalog/catalog.md#summary",
-    "lld/catalog/test_catalog.md#call-graph"
+    "lld/catalog/catalog.md#summary"
    ]
   },
   "symbol:components/catalog/catalog.py#in_stock": {
@@ -144,6 +144,8 @@
     "lld/catalog/catalog.md#index",
     "lld/catalog/catalog.md#summary",
     "lld/catalog/test_catalog.md#summary",
+    "progress.md#final-pass-session-3",
+    "progress.md#reader-test",
     "reference/configuration.md#configuration"
    ]
   },
@@ -285,6 +287,7 @@
    "chunks": [
     "hld/03-integrations.md#inbound-interfaces",
     "hld/05-key-flows.md#1-price-an-order",
+    "hld/05-key-flows.md#key-flows",
     "hld/06-cross-cutting.md#testing",
     "knowledge/AGENT-CONTEXT.md#components",
     "knowledge/AGENT-CONTEXT.md#function-index",
@@ -301,8 +304,7 @@
     "lld/orders/orders.md#line_totalsku-qty",
     "lld/orders/orders.md#order_totallines-loyalfalse",
     "lld/orders/orders.md#summary",
-    "lld/orders/test_orders.md#call-graph",
-    "lld/orders/test_orders.md#index"
+    "lld/orders/test_orders.md#call-graph"
    ]
   },
   "symbol:components/orders/orders.py#order_total": {

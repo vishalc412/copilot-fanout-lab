@@ -25,7 +25,7 @@ exposes: []
 
 ## Responsibility
 
-`orders` turns order lines into money and tells the payment partner. It prices one line (`line_total`), prices a whole order with at most one discount (`order_total`), checks lines for a positive quantity and enough stock (`validate`), and posts an order id and amount to the payment partner's settlement address (`settle`) (`components/orders/orders.py:19-51`). It does not keep orders, does not call `validate` before `order_total` or `settle` (the caller must), and has no caller in the repository except its single test (search `order_total`, `validate`, `settle`, `line_total` outside `orders.py`: 3 hits, all in `components/orders/test_orders.py`, per `lld/orders/orders.md`, Summary). It depends on `catalog` for prices and stock (`components/orders/orders.py:5`).
+`orders` turns order lines into money and tells the payment partner. It prices one line (`line_total`), prices a whole order with at most one discount (`order_total`), checks lines for a positive quantity and enough stock (`validate`), and posts an order id and amount to the payment partner's settlement address (`settle`) (`components/orders/orders.py:19-51`). It does not keep orders, does not call `validate` before `order_total` or `settle` (the caller must), and has no caller in the repository except its single test (search `orders`, `order_total`, `validate`, `settle`, `line_total` outside `orders.py`: 3 hits, all in `components/orders/test_orders.py` at lines 3, 7 and 8; of these only `line_total` is called, `components/orders/test_orders.py:8`; per `lld/orders/orders.md`, Summary). It depends on `catalog` for prices and stock (`components/orders/orders.py:5`).
 
 ## Structure
 
@@ -125,7 +125,7 @@ No environment variable or file is read (search `environ`, `getenv` in `componen
 
 ## Errors and resilience
 
-`line_total` and `order_total` let `KeyError` from an unknown SKU escape (`components/orders/orders.py:20`, `components/catalog/catalog.py:23`). `validate` never raises for an unknown SKU; it reports it as not enough stock (`components/orders/orders.py:40-41`). `settle` catches nothing, so connection errors and error statuses reach the caller (inferred: no `try` in `components/orders/orders.py:45-51`; assumed: `urllib.request` raises on these). There is no retry, so a transient partner failure is the caller's to handle.
+`line_total` and `order_total` let `KeyError` from an unknown SKU escape (`components/orders/orders.py:20`, `components/catalog/catalog.py:23`). `validate` never raises for an unknown SKU; it reports it as not enough stock (`components/orders/orders.py:40-41`). It does raise for a `qty` that is not a number or a pair that does not unpack, because nothing checks the shape of the lines (`components/orders/orders.py:37-38`; assumed: Python comparison and unpacking). `settle` catches nothing, so connection errors and error statuses reach the caller (inferred: no `try` in `components/orders/orders.py:45-51`; assumed: `urllib.request` raises on these). There is no retry, so a transient partner failure is the caller's to handle.
 
 ## Logging and monitoring
 

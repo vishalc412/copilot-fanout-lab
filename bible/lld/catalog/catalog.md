@@ -286,7 +286,7 @@ for item in feed.get("products", []):
 
 **Output and side effects**: changes `_PRODUCTS` in memory only; nothing is saved, so a restart returns to the hard-coded values (inferred: no file or database write in `catalog.py:42-47`).
 
-**Errors**: a missing `sku`, `price` or `stock` key raises `KeyError`, and a non-numeric value raises `ValueError` (assumed: Python `float` and `int`); the price is set before the stock, so a failure on `stock` leaves that item half updated and the loop stops (inferred: no `try` in `catalog.py:44-47`).
+**Errors**: a missing `sku`, `price` or `stock` key raises `KeyError`, a non-numeric string raises `ValueError`, and a `null` (`None`) or a list as the `price` or `stock` value raises `TypeError` (assumed: Python `float` and `int`; a JSON `null` is a plausible feed value); the price is set before the stock, so a failure on `stock` leaves that item half updated and the loop stops (inferred: no `try` in `catalog.py:44-47`).
 
 ## Helpers
 

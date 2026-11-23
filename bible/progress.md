@@ -8,11 +8,11 @@ Version given by the user: none.
 
 | Measure | Count |
 | --- | --- |
-| Files in scope | 13 |
+| Files in scope | 12 (13 in the first run, which counted a `.git` pointer file; the script now skips `.git`) |
 | Source files / source lines | 10 / 332 |
 | Classes and functions | 21 |
 | Routes | 0 |
-| Excluded folders | `.github` and `codebase-analysis` (excluded by the issue), `bible` (the output) |
+| Excluded folders | `.github` and `codebase-analysis` (excluded by the issue), `bible` (the output), `.git` (a tool folder, skipped by the script) |
 
 ## Components
 
@@ -68,10 +68,24 @@ Steps run in order: `next.py --new-session` reported a delta (one file outside t
 | 2 Depth audit | Re-read against the code: every card of `tools/gate.py` (`fail`, `read`, `count_tests`, `check`, `main`) and the cards of `line_total`, `order_total`, `validate`, `settle` in `orders.py`. Branches, compared values, messages, outbound call and error paths match the code; no change needed. Not re-read: `catalog.py` and `plan.py` cards (read and checked in session 2) |
 | 3 Reader test | The 15 answers below still hold; every page they name exists |
 | 4 Diagram audit | No page with a diagram changed since the last audit; still no renderer, so checked by reading only |
-| 5 Evidence and safety | Searches re-run by hand and agree with the sweep table: no import outside the standard library and the repository's own modules; no `socket`, `listen`, `serve` or `flask` in `*.py` or `*.sh`; the five functions without a caller still have none; `decisions` occurs once (`tools/gate.py:60`). Search of the output for `password`, `passwd`, `secret`, `token`, `api_key`, `apikey`, `BEGIN`, `Authorization:` and credentials in URLs: hits are only the names of two repository secrets and prose about missing authentication, never a value. No personal data |
-| 6 Knowledge base | `knowledge.py` re-run after the delta: 87 nodes, 144 edges, 220 chunks, 1 unresolved call; `AGENT-CONTEXT.md` is 1,563 words, under the 3,000 limit; no new names, so no second spelling |
+| 5 Evidence and safety | Searches re-run by hand and agree with the sweep table: no import outside the standard library and the repository's own modules; no `socket`, `listen`, `serve` or `flask` in `*.py` or `*.sh`; the six functions without a caller (`fetch_supplier_feed`, `apply_feed`, `image_url`, `order_total`, `validate`, `settle`) still have none; `decisions` occurs once (`tools/gate.py:60`). Search of the output for `password`, `passwd`, `secret`, `token`, `api_key`, `apikey`, `BEGIN`, `Authorization:` and credentials in URLs: hits are only the names of two repository secrets and prose about missing authentication, never a value. No personal data |
+| 6 Knowledge base | `knowledge.py` re-run after the delta: 87 nodes, 144 edges, 220 chunks, 1 unresolved call (the rebuild of 2026-11-23 gives 86 nodes, 144 edges, 233 chunks, V-017); `AGENT-CONTEXT.md` is 1,563 words, under the 3,000 limit; no new names, so no second spelling |
 
-`README.md` stays at DRAFT: the skill's Finish step says to leave it at DRAFT until `verifying-a-codebase-analysis` has checked the bible. Q-001 to Q-003 remain open for the team.
+`README.md` stayed at DRAFT in sessions 1 to 4: the skill's Finish step says to leave it at DRAFT until `verifying-a-codebase-analysis` has checked the bible (superseded by the revision, see "Revision (session 6)" below). Q-001 to Q-003 remain open for the team.
+
+## Revision (session 6)
+
+Source: `verification-report.md` of 2026-11-23 (verdict PASS, 27 minor corrections). Followed `references/revision.md`; each item and its outcome is in `revision-log.md`.
+
+| Step | Result |
+| --- | --- |
+| `inventory.py` | 12 files, 10 source files, 332 source lines, 21 symbols, 0 routes |
+| `coverage.py` | PASS at depth deep: files 7 of 7, symbols 21 of 21, cards 17 of 17, routes 0 of 0, citations 1209 of 1209, branch lines 49 of 49, calls 9 of 9, front matter 11 of 11 |
+| `knowledge.py` | 86 nodes, 144 edges, 233 chunks, 1 unresolved call; `AGENT-CONTEXT.md` 1,678 words, under the 3,000 limit |
+| `next.py` | DONE |
+| Depth audit of changed cards | `validate` and `apply_feed` re-read against the code |
+| Diagram audit of changed diagrams | pre-flight screen of every diagram by script, 0 problems; not rendered |
+| Evidence and safety audit of changed text | changed citations re-opened; secret search hits only names; no personal data |
 
 ## Reader test
 
@@ -79,7 +93,7 @@ Steps run in order: `next.py --new-session` reported a delta (one file outside t
 2. What runs: nothing runs by itself. Libraries `catalog` and `orders` (Python 3), scripts `plan.py`, `gate.py` and `fanout.sh` (`hld/02-architecture.md`, Containers).
 3. Where and how it starts: from a checkout or a GitHub Actions runner, by command line; no ports, no containers (`hld/02-architecture.md`, Deployment and Pipeline).
 4. How a request gets in: there is no request path; entry points are the three commands and the library functions; nothing authenticates (`hld/03-integrations.md`, Inbound; `hld/06-cross-cutting.md`, Authentication).
-5. Other systems: the payment partner (HTTP POST, plain `http`), the supplier feed (HTTP GET, plain `http`), GitHub through `gh`; each address is a constant in source (`hld/03-integrations.md`, Outbound).
+5. Other systems: the payment partner (HTTP POST, plain `http`), the supplier feed (HTTP GET, plain `http`), GitHub through `gh`; each address is a constant in source (`hld/03-integrations.md`, Outbound). The pipeline, not the shop or the scripts, also calls an AI service through the Claude action (assumed; `hld/01-system-context.md`).
 6. Data: `_PRODUCTS` (in memory, owned by `catalog`, three SKUs with name, price, stock) and `plan.json`; no tables; input files are the four analysis files the gate reads (`lld/data-dictionary.md`).
 7. Rules: the 22 numbered rules; the ten main ones are discount stacking, loyalty 5 percent, bulk 10 percent at 10 items, rounding, quantity positive, stock must cover, settlement success on 200, `price_of` raising on unknown SKU, gate pass 1, gate pass 2 and 3 (`lld/orders/README.md`, `lld/catalog/README.md`, `lld/tools/README.md`, Business rules).
 8. Configuration and secrets: module constants and `ENGINE`; no secrets in the code; two workflow secrets by name (`reference/configuration.md`, `hld/06-cross-cutting.md`).
@@ -89,7 +103,7 @@ Steps run in order: `next.py --new-session` reported a delta (one file outside t
 12. Largest handler: there are no route handlers; the largest function is `gate.check`: for an empty input it fails with `... missing`, for valid files it checks substrings, for invalid ones it appends the named messages (`lld/tools/gate.md`, card of `check`).
 13. One table: `_PRODUCTS`; `name` is never written after import, `price` and `stock` are written only by `apply_feed` (`lld/data-dictionary.md`).
 14. One outside system: the payment partner is called only by `settle`; on failure the exception reaches the caller, and any status other than 200 returns `False` (`lld/orders/orders.md`, card of `settle`).
-15. What would surprise a new engineer: plain `http` settlement, functions with no caller, a non-atomic feed update, a baseline reset by `plan.py`, silent pass numbers (`reference/risks-and-surprises.md`).
+15. What would surprise a new engineer: plain `http` settlement, functions with no caller, a non-atomic feed update, a baseline reset by `plan.py`, silent pass numbers (the six functions without a caller are `fetch_supplier_feed`, `apply_feed`, `image_url`, `order_total`, `validate` and `settle`, V-021) (`reference/risks-and-surprises.md`).
 
 ## Questions
 
@@ -105,7 +119,7 @@ Run in session 2 over `components`, `tools`, `README.md` and `.gitignore` (`.git
 
 | Pattern | Files | Hits | What became of them |
 | --- | --- | --- | --- |
-| `http://` | py, sh, md | 7 | 3 real literals (`components/catalog/catalog.py:5`, `components/orders/orders.py:9`, `components/orders/orders.py:12`) documented on the module and component pages and in hld/03; 4 are the text of `tools/plan.py` that finds them (comment, regex, pass text), documented on `lld/tools/plan.md` |
+| `http://` | py, sh, md | 7 | 3 real literals (`components/catalog/catalog.py:5`, `components/orders/orders.py:9`, `components/orders/orders.py:12`) documented on the module and component pages and in hld/03; 4 are text in the tools that deals with such literals: three in `tools/plan.py` (docstring `:6`, regex `:18`, pass text `:50`), documented on `lld/tools/plan.md`, and one in the `tools/gate.py` docstring (`:8`), which the Role row of `lld/tools/gate.md` cites (`tools/gate.py:1-11`) |
 | `https://` | py, sh, md | 1 | `IMAGE_CDN` (`components/catalog/catalog.py:6`), documented as a string constant only; the code never fetches it |
 | `ws://`, `wss://`, `jdbc:`, `mongodb://`, `redis://`, `amqp://`, `ldap://`, `ftp://`, `file://`, `kafka`, `smtp`, `sftp` | py, sh, md | 0 | none |
 | `:[0-9]{4,5}` | py, sh, md | 1 | port 8099 of `DEV_SETTLE_URL`, documented |
@@ -129,7 +143,7 @@ Last question number used: Q-003.
 
 ## Next step
 
-The bible is complete at depth deep and `coverage.py` passes. Remaining for a person: run `verifying-a-codebase-analysis` in a new chat, on a different model if one is available; answer Q-001 to Q-003 in `reference/open-questions.md`; leave `README.md` at DRAFT until then (the skill does not allow leaving DRAFT before verification; session 3 confirmed the gate again and kept it).
+The bible is complete at depth deep and `coverage.py` passes (session 6: 7 of 7 files, 21 of 21 symbols, 17 of 17 cards, 1209 of 1209 citations). The independent verification of 2026-11-23 gave PASS and its items were applied (`revision-log.md`). Remaining for a person: answer Q-001 to Q-003 in `reference/open-questions.md`; decide which acting document is live for `bible/` (`run-notes.md`, unconfirmed decisions); ideally have a person or another model re-check V-012, V-025 and the parts changed in session 6. `README.md` carries the status `CORRECTED AFTER VERIFICATION` as `references/revision.md` says; it is not `VERIFIED`.
 
 <!-- cites components/catalog/catalog.py@1e15fdaab1fa3c720d99a864abb4cac9c8259421 -->
 

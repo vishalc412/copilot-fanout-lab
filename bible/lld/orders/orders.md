@@ -163,7 +163,7 @@ Source: `components/orders/orders.py:35-42` <!-- code: c72f2cd2ce78 -->
 
 | Name | Type | Meaning | Checked how |
 | --- | --- | --- | --- |
-| `lines` | list of `(sku, qty)` pairs | The order lines | this function is the check |
+| `lines` | list of `(sku, qty)` pairs | The order lines | this function is the check for the sign and the stock of `qty`; the shape of the pairs and the type of `qty` are not checked (see Errors) |
 
 **Steps**
 
@@ -189,13 +189,13 @@ return errors
 
 | Line | Branch | When | What happens |
 | --- | --- | --- | --- |
-| `components/orders/orders.py:37` | for | once per order line | each line is checked on its own, so two lines for the same SKU are never added together (inferred: `qty` is the line's own value at `orders.py:40`) |
-| `components/orders/orders.py:38` | if | `qty <= 0` | message `"<sku>: quantity must be positive"` is appended |
+| `components/orders/orders.py:37` | for | once per order line | a pair that does not unpack into `(sku, qty)` raises and ends the call (assumed: Python unpacking); each line is checked on its own, so two lines for the same SKU are never added together (inferred: `qty` is the line's own value at `orders.py:40`) |
+| `components/orders/orders.py:38` | if | `qty <= 0` | message `"<sku>: quantity must be positive"` is appended; when `qty` is not a number the comparison raises `TypeError` and the call ends (assumed: Python comparison) |
 | `components/orders/orders.py:40` | elif | the quantity is positive and `catalog.in_stock` is false | message `"<sku>: not enough stock"` is appended |
 
-**Output and side effects**: returns a list of strings; nothing is raised or logged.
+**Output and side effects**: returns a list of strings; nothing is logged, and nothing is raised for well-formed lines (see Errors for malformed ones).
 
-**Errors**: none raised by this code; `catalog.in_stock` does not raise for an unknown SKU (`components/catalog/catalog.py:28-29`).
+**Errors**: no error is raised deliberately, and `catalog.in_stock` does not raise for an unknown SKU (`components/catalog/catalog.py:28-29`). Bad input to this function does raise, and nothing catches it: a `qty` that cannot be compared with 0 (a string or `None`) raises `TypeError` at `qty <= 0` (`orders.py:38`), a pair that does not unpack into two values raises `ValueError` or `TypeError` at the loop header (`orders.py:37`), and a `lines` value that is not iterable raises `TypeError` there too (assumed: Python comparison and unpacking). The exception leaves the function, so the messages gathered for earlier lines are lost (inferred: `errors` is returned only at `orders.py:42`).
 
 ### `settle(order_id, amount, dev=False, timeout=15)`
 

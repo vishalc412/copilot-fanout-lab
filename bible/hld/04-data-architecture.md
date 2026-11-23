@@ -1,6 +1,6 @@
 # Data architecture
 
-The system keeps no data on disk and has no database. The shop data is a three-entry dict in the memory of the importing process, and the tools share one generated JSON file. Detail is in the [data dictionary](../lld/data-dictionary.md).
+The shop keeps no data on disk and has no database. The shop data is a three-entry dict in the memory of the importing process; the tools share one generated JSON file, which `plan.py` writes to disk (`tools/plan.py:55-57`). Detail is in the [data dictionary](../lld/data-dictionary.md).
 
 ## Stores
 

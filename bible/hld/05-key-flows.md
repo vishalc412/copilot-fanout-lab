@@ -1,6 +1,6 @@
 # Key flows
 
-Ten end-to-end flows: four in the shop library (called by a caller that is not in this repository), five around the tools, and one in the `bible/` CI job. Step numbers in each table match the `autonumber` of its diagram, branches included. Names of people and callers: "Caller" is any code that imports the library; the repository has none except the two tests (search `order_total`, `validate`, `settle`, `fetch_supplier_feed`, `apply_feed` outside their own files: 0 hits outside the tests).
+Ten end-to-end flows: four in the shop library (called by a caller that is not in this repository), five around the tools, and one in the `bible/` CI job. Step numbers in each table match the `autonumber` of its diagram, branches included. Names of people and callers: "Caller" is any code that imports the library; the repository has no caller of `order_total`, `validate`, `settle`, `fetch_supplier_feed` or `apply_feed` (search these names outside their own files: 0 hits, the two tests included). The tests call only `orders.line_total` and `catalog.price_of` (`components/orders/test_orders.py:8`, `components/catalog/test_catalog.py:8`).
 
 | # | Flow | Trigger | Components | Endpoint cards |
 | --- | --- | --- | --- | --- |
@@ -101,7 +101,7 @@ sequenceDiagram
 | 8 | Enough stock gives `True` and no message | `components/catalog/catalog.py:29` |
 | 9 | The function returns the list of messages | `components/orders/orders.py:42` |
 
-Failure paths: nothing raises; the two messages are the only failures. An unknown SKU and an out-of-stock SKU give the same message (`components/catalog/catalog.py:29`, `components/orders/orders.py:41`).
+Failure paths: for well-formed lines nothing raises, and the two messages are the only failures. Malformed input is not drawn: a `qty` that is not a number raises `TypeError` at the `qty <= 0` test, and a pair that does not unpack raises at the loop header, in both cases ending the call without a list (`components/orders/orders.py:37-38`; assumed: Python comparison and unpacking). An unknown SKU and an out-of-stock SKU give the same message (`components/catalog/catalog.py:29`, `components/orders/orders.py:41`).
 
 ## 3. Settle an order
 
@@ -307,7 +307,7 @@ Failure paths: step 4 and step 6. The failure at step 6 does not stop the pass c
 
 ## 8. Fan out one issue per component
 
-Trigger: `ENGINE=copilot|claude tools/fanout.sh <owner/repo>`. Outcome: labels and one issue per component, or exit 2 for an unknown engine.
+Trigger: `ENGINE=copilot|claude tools/fanout.sh <owner/repo>` run by an operator (inferred: the usage comment at `tools/fanout.sh:3`; search `fanout` outside `tools/fanout.sh` in `.github`, `components`, `tools`, `codebase-analysis` and `README.md`: 2 hits, both in `README.md:1` and `README.md:8`, neither starts it). Outcome: labels and one issue per component, or exit 2 for an unknown engine.
 
 ```mermaid
 sequenceDiagram
@@ -418,9 +418,15 @@ sequenceDiagram
 
 Failure paths: step 4. The scripts themselves are the analysis toolkit under `.github/skills/analyzing-a-codebase/scripts`, outside the analysis scope (`.github/workflows/toolkit-analysis.yml:9`).
 
+<!-- cites README.md@61543f4e8ea18677f318b804951295e5b678b877 -->
+
 <!-- cites components/catalog/catalog.py@1e15fdaab1fa3c720d99a864abb4cac9c8259421 -->
 
+<!-- cites components/catalog/test_catalog.py@9be40d147e425d178067c8b34f19b28b9b374d1f -->
+
 <!-- cites components/orders/orders.py@33203a1b4d48a6d335cf411f56a54a7035a66ae0 -->
+
+<!-- cites components/orders/test_orders.py@ca9144cf39abe39e988dc009863b036a7ee1a39f -->
 
 <!-- cites tools/fanout.sh@9ad43aa70e042837954fea1faf483f6c08e07470 -->
 

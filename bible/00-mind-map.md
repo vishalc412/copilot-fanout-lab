@@ -1,6 +1,6 @@
 # Mind map
 
-The whole system on one page. Each leaf names the page that documents it. The system is `copilot-fanout-lab`: a sample shop library and three scripts that plan, open and gate component analysis (`README.md:1-9`).
+The whole system on one page. Each leaf names the page that documents it. The system is `copilot-fanout-lab`: a sample shop library and three scripts that plan, open and gate component analysis (`README.md:1-10`).
 
 ```mermaid
 mindmap
@@ -30,6 +30,8 @@ mindmap
       Supplier product feed
       GitHub through gh
       GitHub Actions
+      Analysing coding agent
+      AI service of the Claude action
     Reference
       Risks and surprises
       Open questions
@@ -111,6 +113,7 @@ mindmap
       inventory, risks and tests-report files
     Outside
       GitHub through gh
+      Analysing coding agent, wakes on the issue
       unittest child process
 ```
 
@@ -133,7 +136,7 @@ Pages: [lld/tools/README.md](lld/tools/README.md), [lld/tools/plan.md](lld/tools
   - Data ([lld/data-dictionary.md](lld/data-dictionary.md))
     - _PRODUCTS, plan.json, analysis files
   - Outside systems ([hld/01-system-context.md](hld/01-system-context.md))
-    - Payment partner settlement endpoint, Supplier product feed, GitHub, GitHub Actions
+    - Payment partner settlement endpoint, Supplier product feed, GitHub, GitHub Actions, Analysing coding agent, AI service of the Claude action
   - Reference ([reference/risks-and-surprises.md](reference/risks-and-surprises.md), [reference/open-questions.md](reference/open-questions.md), [reference/configuration.md](reference/configuration.md), [reference/glossary.md](reference/glossary.md))
 
 <!-- cites README.md@61543f4e8ea18677f318b804951295e5b678b877 -->

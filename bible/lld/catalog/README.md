@@ -121,7 +121,7 @@ No file, database or cache is read or written (search `sqlite`, `execute`, `.wri
 
 ## Errors and resilience
 
-`price_of` raises `KeyError` for an unknown SKU (`components/catalog/catalog.py:23`). `fetch_supplier_feed` catches nothing, so network and JSON errors reach the caller (inferred: no `try` in `components/catalog/catalog.py:36-39`; assumed: `urllib` and `json` raise on failure). `apply_feed` raises `KeyError` when a feed item has no `sku`, `price` or `stock` and `ValueError` for a value that is not a number (inferred: direct indexing and `float`/`int` at `components/catalog/catalog.py:45-47`), after earlier items were already applied, so a bad feed can leave the table half updated.
+`price_of` raises `KeyError` for an unknown SKU (`components/catalog/catalog.py:23`). `fetch_supplier_feed` catches nothing, so network and JSON errors reach the caller (inferred: no `try` in `components/catalog/catalog.py:36-39`; assumed: `urllib` and `json` raise on failure). `apply_feed` raises `KeyError` when a feed item has no `sku`, `price` or `stock`, `ValueError` for a string that is not a number and `TypeError` for a `null` or a list (inferred: direct indexing and `float`/`int` at `components/catalog/catalog.py:45-47`), after earlier items were already applied, so a bad feed can leave the table half updated.
 
 ## Logging and monitoring
 

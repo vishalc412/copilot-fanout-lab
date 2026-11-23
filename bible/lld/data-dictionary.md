@@ -86,7 +86,7 @@ All sit in `codebase-analysis/components/<name>/`, are written by the analysing 
 
 ### `.gitignore`
 
-Three patterns: `__pycache__/`, `*.pyc` and a third folder pattern (`.gitignore:1-3`). It controls what is committed, not what the code reads.
+Three patterns: `__pycache__/`, `*.pyc` and a third folder pattern (`.gitignore:1-3`). It controls what is committed, not what the code reads. The third pattern is left unnamed on purpose: a comment on this pull request (2026-11-20) asked for references to the retired run-harness folder to be removed from `bible/`; the pattern is at `.gitignore:3` for anyone who needs it (revision item N-03).
 
 ## Status and enum values
 

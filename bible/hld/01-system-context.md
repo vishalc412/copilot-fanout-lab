@@ -1,6 +1,6 @@
 # System context
 
-This repository is a small experiment, `copilot-fanout-lab`: a sample shop library (two components, `catalog` and `orders`) and three scripts (`tools`) that plan, open and gate one analysis issue per component (`README.md:1-9`). The system has no server and no user interface; people and automation run its scripts, and its two outbound network calls (a payment partner and a supplier feed) are functions that nothing in the repository calls.
+This repository is a small experiment, `copilot-fanout-lab`: a sample shop library (two components, `catalog` and `orders`) and three scripts (`tools`) that plan, open and gate one analysis issue per component (`README.md:1-10`). The system has no server and no user interface; people and automation run its scripts, and its two outbound network calls (a payment partner and a supplier feed) are functions that nothing in the repository calls.
 
 ## Context diagram
 
@@ -11,6 +11,7 @@ flowchart LR
   operator(["Operator<br/>shell user of the scripts"])
   agent{{"Analysing coding agent<br/>Copilot or Claude stand-in"}}
   actions{{"GitHub Actions<br/>runs the workflows"}}
+  aiservice{{"AI service of the Claude action<br/>Anthropic API, assumed<br/>external"}}
   subgraph labsys["copilot-fanout-lab"]
     shop["catalog and orders<br/>Python 3 library<br/>Prices and settles orders"]
     tools["tools<br/>Python 3 and bash<br/>Plans, fans out and gates"]
@@ -18,8 +19,10 @@ flowchart LR
   github{{"GitHub<br/>issues, labels and pull requests"}}
   partner{{"Payment partner settlement endpoint<br/>external"}}
   supplier{{"Supplier product feed<br/>external"}}
-  operator -->|"python tools/plan.py, gate.py, fanout.sh"| tools
+  operator -->|"python tools/plan.py and tools/gate.py"| tools
+  operator -.->|"tools/fanout.sh, per its usage comment"| tools
   actions -->|"python tools/plan.py and tools/gate.py"| tools
+  actions -.->|"claude.yml runs the Claude action with a key or token"| aiservice
   tools -.->|"gh label create and gh issue create"| github
   github -.->|"issue or mention wakes the agent"| agent
   agent -.->|"writes analysis files, opens a PR"| github
@@ -29,7 +32,8 @@ flowchart LR
 
 | Element | Evidence |
 | --- | --- |
-| operator runs the three scripts | `tools/plan.py:61-62`, `tools/gate.py:116-117`, `tools/fanout.sh:3` |
+| operator runs the three scripts (inferred for `fanout.sh`: usage comment) | `tools/plan.py:61-62`, `tools/gate.py:116-117`, `tools/fanout.sh:3` |
+| GitHub Actions runs the Claude action, which calls an AI service (assumed: the action's own behaviour) | `.github/workflows/claude.yml:42-46` |
 | GitHub Actions runs `plan.py` and `gate.py` | `.github/workflows/plan.yml:14`, `.github/workflows/analysis-gate.yml:53`, `.github/workflows/copilot-setup-steps.yml:18-19` |
 | `tools` creates labels and issues through `gh` (inferred: `gh` talks to GitHub) | `tools/fanout.sh:10`, `tools/fanout.sh:12`, `tools/fanout.sh:25-28` |
 | GitHub wakes the agent: assignee `@copilot` or label `agent:claude` (inferred: the issue text addresses the agent) | `tools/fanout.sh:14-21`, `tools/fanout.sh:25-28`, `.github/workflows/claude.yml:11-13` |
@@ -43,8 +47,9 @@ Shapes: rounded = people, rectangle = this system's units, hexagon = outside sys
 
 | Person or outside system | What the system uses it for | Protocol, scheme, port | Address from | Authentication | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| Operator | Runs `plan.py`, `gate.py` and `fanout.sh` from a shell | command line | not applicable | the operator's `gh` login for `fanout.sh` (assumed: `gh` own credentials) | `tools/fanout.sh:3`, `tools/fanout.sh:10` |
-| GitHub Actions | Runs `plan.py` on demand, the gate on every pull request, a setup check for Copilot and the bible scripts | workflow runs on GitHub-hosted runners | files in `.github/workflows/` | workflow tokens, `contents: write` for `plan.yml` | `.github/workflows/plan.yml:3-5`, `.github/workflows/analysis-gate.yml:2-5`, `.github/workflows/copilot-setup-steps.yml:2-12`, `.github/workflows/toolkit-analysis.yml:2-7` |
+| Operator | Runs `plan.py`, `gate.py` and `fanout.sh` from a shell (inferred for `fanout.sh`: usage comment) | command line | not applicable | the operator's `gh` login for `fanout.sh` (assumed: `gh` own credentials) | `tools/fanout.sh:3`, `tools/fanout.sh:10` |
+| GitHub Actions | Runs `plan.py` on demand, the gate on every pull request, a setup check for Copilot and the bible scripts | workflow runs on GitHub-hosted runners | files in `.github/workflows/` | workflow tokens: `contents: write` for `plan.yml`; `contents: write`, `pull-requests: write`, `issues: write` and `id-token: write` for `claude.yml` | `.github/workflows/plan.yml:3-5`, `.github/workflows/analysis-gate.yml:2-5`, `.github/workflows/copilot-setup-steps.yml:2-12`, `.github/workflows/toolkit-analysis.yml:2-7`, `.github/workflows/claude.yml:19-23` |
+| AI service of the Claude action | Answers an `@claude` mention through `anthropics/claude-code-action@v1`, only when a repository secret is set; used by the pipeline, not by the shop or the scripts | not stated in the repository (assumed: HTTPS API of the action's provider) | the action itself (assumed) | the secret `ANTHROPIC_API_KEY` or `CLAUDE_CODE_OAUTH_TOKEN`, named only | `.github/workflows/claude.yml:29-36`, `.github/workflows/claude.yml:42-46` |
 | GitHub | Holds the repository, issues, labels and pull requests that `fanout.sh` creates | via `gh`, scheme and port not stated in the repository (assumed: HTTPS) | first argument `<owner/repo>` | `gh` login (assumed) | `tools/fanout.sh:7`, `tools/fanout.sh:10-28` |
 | Analysing coding agent (Copilot, or the Claude stand-in) | Receives the issue, writes the analysis files and opens a PR | issue assignment and `@copilot` or `@claude` comments | the issue body made by `fanout.sh` | not stated here; the Claude workflow admits only owners, members and collaborators (`.github/workflows/claude.yml:9-13`) | `tools/fanout.sh:14-28`, `.github/workflows/claude.yml:9-13` |
 | Payment partner settlement endpoint | Receives a settled order id and amount | HTTP POST, plain `http`, port 80 implied (inferred: no port in the URL) | constant `PARTNER_SETTLE_URL` | none sent: no authentication header | `components/orders/orders.py:9`, `components/orders/orders.py:45-51` |

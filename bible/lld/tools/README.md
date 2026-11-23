@@ -19,7 +19,7 @@ exposes: [job:python tools/plan.py, job:python tools/gate.py, job:tools/fanout.s
 | Kind | tool: three command-line scripts run by a person or by the CI workflows |
 | Folders and files | `tools/plan.py`, `tools/gate.py`, `tools/fanout.sh` |
 | Technology | Python 3 standard library (`tools/gate.py:13-18`, `tools/plan.py:8-12`) and bash (`tools/fanout.sh:1`); the shell script also needs the `gh` command (`tools/fanout.sh:10`) |
-| Starts by | `python tools/plan.py`, `python tools/gate.py <component> [--pass N]`, `ENGINE=copilot\|claude tools/fanout.sh <owner/repo>` (`tools/plan.py:61-62`, `tools/gate.py:116-117`, `tools/fanout.sh:3`) |
+| Starts by | `python tools/plan.py`, `python tools/gate.py <component> [--pass N]`, `ENGINE=copilot\|claude tools/fanout.sh <owner/repo>` (`tools/plan.py:61-62`, `tools/gate.py:116-117`, `tools/fanout.sh:3`; inferred for `fanout.sh`: its usage comment) |
 | Size | 3 files, 210 lines, 7 functions (the shell file has none), 0 routes |
 | Depth | deep |
 
@@ -44,7 +44,7 @@ flowchart TB
   outdir[("codebase-analysis/components/NAME/<br/>analysis files")]
   gh{{"GitHub via gh CLI<br/>external"}}
   person -->|"python tools/plan.py"| plan
-  person -->|"tools/fanout.sh owner/repo"| fanout
+  person -.->|"tools/fanout.sh owner/repo, per its usage comment"| fanout
   person -->|"python tools/gate.py NAME"| gate
   plan -->|"parses with ast"| comps
   plan -->|"imports count_tests"| gate
@@ -58,6 +58,8 @@ flowchart TB
 
 | Element | Evidence |
 | --- | --- |
+| the operator or CI runs `plan.py` and `gate.py` | `tools/plan.py:61-62`, `tools/gate.py:116-117`, `.github/workflows/plan.yml:14`, `.github/workflows/analysis-gate.yml:53` |
+| the operator runs `fanout.sh` (inferred: usage comment) | `tools/fanout.sh:3` |
 | `plan.py` parses components | `tools/plan.py:21-35` |
 | `plan.py` imports `count_tests` from `gate.py` | `tools/plan.py:14-15`, `tools/plan.py:36` |
 | `plan.py` writes `plan.json` | `tools/plan.py:55-57` |
@@ -67,7 +69,7 @@ flowchart TB
 | `fanout.sh` reads component names | `tools/fanout.sh:9` |
 | `fanout.sh` calls GitHub through `gh` | `tools/fanout.sh:10`, `tools/fanout.sh:12`, `tools/fanout.sh:25-28` |
 
-Shapes: rounded = people, rectangle = this system's units, cylinder = file or data store, hexagon = outside system. Dashed line = connection leaving the repository.
+Shapes: rounded = people, rectangle = this system's units, cylinder = file or data store, hexagon = outside system. Dashed line = connection leaving the repository, or inferred (the operator running `fanout.sh`).
 
 ## Modules
 

@@ -1,17 +1,17 @@
 {
- "generated": "2026-11-23T06:14:39",
+ "generated": "2026-11-23T06:46:27",
  "tool": "analyzing-a-codebase/scripts/knowledge.py 1.5.0",
  "stats": {
-  "nodes": 85,
+  "nodes": 86,
   "edges": 144,
-  "chunks": 220,
+  "chunks": 233,
   "calls_unresolved": 1,
   "by_node_type": {
    "File": 19,
    "Function": 17,
    "Class": 2,
    "Method": 2,
-   "Page": 27,
+   "Page": 28,
    "Component": 3,
    "Store": 1,
    "Config": 8,
@@ -473,6 +473,14 @@
    "type": "Page",
    "name": "reference/risks-and-surprises.md",
    "path": "reference/risks-and-surprises.md",
+   "kind": "",
+   "summary": ""
+  },
+  {
+   "id": "page:revision-log.md",
+   "type": "Page",
+   "name": "revision-log.md",
+   "path": "revision-log.md",
    "kind": "",
    "summary": ""
   },

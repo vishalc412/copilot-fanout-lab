@@ -61,6 +61,7 @@ page:reference/configuration.md,Page,reference/configuration.md,reference/config
 page:reference/glossary.md,Page,reference/glossary.md,reference/glossary.md,,,,,,,,
 page:reference/open-questions.md,Page,reference/open-questions.md,reference/open-questions.md,,,,,,,,
 page:reference/risks-and-surprises.md,Page,reference/risks-and-surprises.md,reference/risks-and-surprises.md,,,,,,,,
+page:revision-log.md,Page,revision-log.md,revision-log.md,,,,,,,,
 page:run-notes.md,Page,run-notes.md,run-notes.md,,,,,,,,
 store:_PRODUCTS,Store,_PRODUCTS,,,,,,,,,
 symbol:components/catalog/catalog.py#apply_feed,Function,apply_feed,components/catalog/catalog.py,,python,,42,47,,2,
