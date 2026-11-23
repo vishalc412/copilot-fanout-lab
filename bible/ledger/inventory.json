@@ -1,19 +1,23 @@
 {
- "generated": "2026-11-21T03:08:51",
+ "generated": "2026-11-23T06:14:30",
  "tool": "analyzing-a-codebase/scripts/inventory.py 1.8.0",
  "totals": {
-  "files": 13,
+  "files": 12,
   "source_files": 10,
   "source_lines": 332,
   "symbols": 21,
   "routes": 0,
   "by_kind": {
-   "other": 2,
+   "other": 1,
    "doc": 1,
    "source": 10
   }
  },
  "excluded": [
+  {
+   "path": ".git",
+   "reason": "generated, vendored or tool folder"
+  },
   {
    "path": ".github",
    "reason": "excluded by the user"
@@ -28,15 +32,6 @@
   }
  ],
  "files": [
-  {
-   "path": ".git",
-   "kind": "other",
-   "lang": null,
-   "binary": false,
-   "lines": 1,
-   "symbols": [],
-   "routes": []
-  },
   {
    "path": ".gitignore",
    "kind": "other",
