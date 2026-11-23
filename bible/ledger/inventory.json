@@ -1,0 +1,1214 @@
+{
+ "generated": "2026-11-23T06:46:26",
+ "tool": "analyzing-a-codebase/scripts/inventory.py 1.8.0",
+ "totals": {
+  "files": 12,
+  "source_files": 10,
+  "source_lines": 332,
+  "symbols": 21,
+  "routes": 0,
+  "by_kind": {
+   "other": 1,
+   "doc": 1,
+   "source": 10
+  }
+ },
+ "excluded": [
+  {
+   "path": ".git",
+   "reason": "generated, vendored or tool folder"
+  },
+  {
+   "path": ".github",
+   "reason": "excluded by the user"
+  },
+  {
+   "path": "bible",
+   "reason": "the analysis output"
+  },
+  {
+   "path": "codebase-analysis",
+   "reason": "excluded by the user"
+  }
+ ],
+ "files": [
+  {
+   "path": ".gitignore",
+   "kind": "other",
+   "lang": null,
+   "binary": false,
+   "lines": 3,
+   "symbols": [],
+   "routes": []
+  },
+  {
+   "path": "README.md",
+   "kind": "doc",
+   "lang": null,
+   "binary": false,
+   "lines": 13,
+   "symbols": [],
+   "routes": []
+  },
+  {
+   "path": "components/__init__.py",
+   "kind": "source",
+   "lang": "python",
+   "binary": false,
+   "lines": 0,
+   "symbols": [
+    {
+     "name": "(imports)",
+     "qualname": "(imports)",
+     "kind": "imports",
+     "start": 0,
+     "end": 0,
+     "size": 0,
+     "decorators": [],
+     "imports": []
+    }
+   ],
+   "routes": []
+  },
+  {
+   "path": "components/catalog/__init__.py",
+   "kind": "source",
+   "lang": "python",
+   "binary": false,
+   "lines": 0,
+   "symbols": [
+    {
+     "name": "(imports)",
+     "qualname": "(imports)",
+     "kind": "imports",
+     "start": 0,
+     "end": 0,
+     "size": 0,
+     "decorators": [],
+     "imports": []
+    }
+   ],
+   "routes": []
+  },
+  {
+   "path": "components/catalog/catalog.py",
+   "kind": "source",
+   "lang": "python",
+   "binary": false,
+   "lines": 47,
+   "symbols": [
+    {
+     "name": "get_product",
+     "qualname": "get_product",
+     "kind": "function",
+     "start": 15,
+     "end": 17,
+     "size": 3,
+     "decorators": [],
+     "branches": [],
+     "calls": [
+      {
+       "name": "_PRODUCTS.get",
+       "line": 17
+      }
+     ]
+    },
+    {
+     "name": "price_of",
+     "qualname": "price_of",
+     "kind": "function",
+     "start": 20,
+     "end": 24,
+     "size": 5,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "if",
+       "line": 22,
+       "detail": ""
+      },
+      {
+       "kind": "raise",
+       "line": 23,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "get_product",
+       "line": 21
+      },
+      {
+       "name": "KeyError",
+       "line": 23
+      }
+     ]
+    },
+    {
+     "name": "in_stock",
+     "qualname": "in_stock",
+     "kind": "function",
+     "start": 27,
+     "end": 29,
+     "size": 3,
+     "decorators": [],
+     "branches": [],
+     "calls": [
+      {
+       "name": "get_product",
+       "line": 28
+      }
+     ]
+    },
+    {
+     "name": "image_url",
+     "qualname": "image_url",
+     "kind": "function",
+     "start": 32,
+     "end": 33,
+     "size": 2,
+     "decorators": [],
+     "branches": [],
+     "calls": [
+      {
+       "name": "sku.lower",
+       "line": 33
+      }
+     ]
+    },
+    {
+     "name": "fetch_supplier_feed",
+     "qualname": "fetch_supplier_feed",
+     "kind": "function",
+     "start": 36,
+     "end": 39,
+     "size": 4,
+     "decorators": [],
+     "branches": [],
+     "calls": [
+      {
+       "name": "urllib.request.urlopen",
+       "line": 38
+      },
+      {
+       "name": "json.loads",
+       "line": 39
+      },
+      {
+       "name": "resp.read",
+       "line": 39
+      }
+     ]
+    },
+    {
+     "name": "apply_feed",
+     "qualname": "apply_feed",
+     "kind": "function",
+     "start": 42,
+     "end": 47,
+     "size": 6,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "loop",
+       "line": 44,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 45,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "feed.get",
+       "line": 44
+      },
+      {
+       "name": "float",
+       "line": 46
+      },
+      {
+       "name": "int",
+       "line": 47
+      }
+     ]
+    },
+    {
+     "name": "(imports)",
+     "qualname": "(imports)",
+     "kind": "imports",
+     "start": 0,
+     "end": 0,
+     "size": 0,
+     "decorators": [],
+     "imports": [
+      {
+       "module": "json",
+       "name": null,
+       "as": "json",
+       "line": 2
+      },
+      {
+       "module": "urllib.request",
+       "name": null,
+       "as": "urllib",
+       "line": 3
+      }
+     ]
+    }
+   ],
+   "routes": []
+  },
+  {
+   "path": "components/catalog/test_catalog.py",
+   "kind": "source",
+   "lang": "python",
+   "binary": false,
+   "lines": 12,
+   "symbols": [
+    {
+     "name": "CatalogTest",
+     "qualname": "CatalogTest",
+     "kind": "class",
+     "start": 6,
+     "end": 8,
+     "size": 3,
+     "decorators": []
+    },
+    {
+     "name": "test_price_of_known_sku",
+     "qualname": "CatalogTest.test_price_of_known_sku",
+     "kind": "method",
+     "start": 7,
+     "end": 8,
+     "size": 2,
+     "decorators": [],
+     "branches": [],
+     "calls": [
+      {
+       "name": "self.assertEqual",
+       "line": 8
+      },
+      {
+       "name": "catalog.price_of",
+       "line": 8
+      }
+     ]
+    },
+    {
+     "name": "(imports)",
+     "qualname": "(imports)",
+     "kind": "imports",
+     "start": 0,
+     "end": 0,
+     "size": 0,
+     "decorators": [],
+     "imports": [
+      {
+       "module": "unittest",
+       "name": null,
+       "as": "unittest",
+       "line": 1
+      },
+      {
+       "module": "components.catalog",
+       "name": "catalog",
+       "as": "catalog",
+       "line": 3
+      }
+     ]
+    }
+   ],
+   "routes": []
+  },
+  {
+   "path": "components/orders/__init__.py",
+   "kind": "source",
+   "lang": "python",
+   "binary": false,
+   "lines": 0,
+   "symbols": [
+    {
+     "name": "(imports)",
+     "qualname": "(imports)",
+     "kind": "imports",
+     "start": 0,
+     "end": 0,
+     "size": 0,
+     "decorators": [],
+     "imports": []
+    }
+   ],
+   "routes": []
+  },
+  {
+   "path": "components/orders/orders.py",
+   "kind": "source",
+   "lang": "python",
+   "binary": false,
+   "lines": 51,
+   "symbols": [
+    {
+     "name": "line_total",
+     "qualname": "line_total",
+     "kind": "function",
+     "start": 19,
+     "end": 20,
+     "size": 2,
+     "decorators": [],
+     "branches": [],
+     "calls": [
+      {
+       "name": "catalog.price_of",
+       "line": 20
+      }
+     ]
+    },
+    {
+     "name": "order_total",
+     "qualname": "order_total",
+     "kind": "function",
+     "start": 23,
+     "end": 32,
+     "size": 10,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "if",
+       "line": 28,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 30,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "sum",
+       "line": 25
+      },
+      {
+       "name": "line_total",
+       "line": 25
+      },
+      {
+       "name": "max",
+       "line": 31
+      },
+      {
+       "name": "round",
+       "line": 32
+      }
+     ]
+    },
+    {
+     "name": "validate",
+     "qualname": "validate",
+     "kind": "function",
+     "start": 35,
+     "end": 42,
+     "size": 8,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "loop",
+       "line": 37,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 38,
+       "detail": ""
+      },
+      {
+       "kind": "elif",
+       "line": 40,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "errors.append",
+       "line": 39
+      },
+      {
+       "name": "catalog.in_stock",
+       "line": 40
+      }
+     ]
+    },
+    {
+     "name": "settle",
+     "qualname": "settle",
+     "kind": "function",
+     "start": 45,
+     "end": 51,
+     "size": 7,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "ternary",
+       "line": 47,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "().encode",
+       "line": 48
+      },
+      {
+       "name": "json.dumps",
+       "line": 48
+      },
+      {
+       "name": "urllib.request.Request",
+       "line": 49
+      },
+      {
+       "name": "urllib.request.urlopen",
+       "line": 50
+      }
+     ]
+    },
+    {
+     "name": "(imports)",
+     "qualname": "(imports)",
+     "kind": "imports",
+     "start": 0,
+     "end": 0,
+     "size": 0,
+     "decorators": [],
+     "imports": [
+      {
+       "module": "json",
+       "name": null,
+       "as": "json",
+       "line": 2
+      },
+      {
+       "module": "urllib.request",
+       "name": null,
+       "as": "urllib",
+       "line": 3
+      },
+      {
+       "module": "components.catalog",
+       "name": "catalog",
+       "as": "catalog",
+       "line": 5
+      }
+     ]
+    }
+   ],
+   "routes": []
+  },
+  {
+   "path": "components/orders/test_orders.py",
+   "kind": "source",
+   "lang": "python",
+   "binary": false,
+   "lines": 12,
+   "symbols": [
+    {
+     "name": "OrdersTest",
+     "qualname": "OrdersTest",
+     "kind": "class",
+     "start": 6,
+     "end": 8,
+     "size": 3,
+     "decorators": []
+    },
+    {
+     "name": "test_line_total",
+     "qualname": "OrdersTest.test_line_total",
+     "kind": "method",
+     "start": 7,
+     "end": 8,
+     "size": 2,
+     "decorators": [],
+     "branches": [],
+     "calls": [
+      {
+       "name": "self.assertEqual",
+       "line": 8
+      },
+      {
+       "name": "orders.line_total",
+       "line": 8
+      }
+     ]
+    },
+    {
+     "name": "(imports)",
+     "qualname": "(imports)",
+     "kind": "imports",
+     "start": 0,
+     "end": 0,
+     "size": 0,
+     "decorators": [],
+     "imports": [
+      {
+       "module": "unittest",
+       "name": null,
+       "as": "unittest",
+       "line": 1
+      },
+      {
+       "module": "components.orders",
+       "name": "orders",
+       "as": "orders",
+       "line": 3
+      }
+     ]
+    }
+   ],
+   "routes": []
+  },
+  {
+   "path": "tools/fanout.sh",
+   "kind": "source",
+   "lang": "shell",
+   "binary": false,
+   "lines": 31,
+   "symbols": [],
+   "routes": []
+  },
+  {
+   "path": "tools/gate.py",
+   "kind": "source",
+   "lang": "python",
+   "binary": false,
+   "lines": 117,
+   "symbols": [
+    {
+     "name": "fail",
+     "qualname": "fail",
+     "kind": "function",
+     "start": 23,
+     "end": 26,
+     "size": 4,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "loop",
+       "line": 24,
+       "detail": ""
+      },
+      {
+       "kind": "ternary",
+       "line": 26,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "print",
+       "line": 25
+      }
+     ]
+    },
+    {
+     "name": "read",
+     "qualname": "read",
+     "kind": "function",
+     "start": 29,
+     "end": 30,
+     "size": 2,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "ternary",
+       "line": 30,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "path.exists",
+       "line": 30
+      },
+      {
+       "name": "path.read_text",
+       "line": 30
+      }
+     ]
+    },
+    {
+     "name": "count_tests",
+     "qualname": "count_tests",
+     "kind": "function",
+     "start": 33,
+     "end": 39,
+     "size": 7,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "loop",
+       "line": 35,
+       "detail": ""
+      },
+      {
+       "kind": "loop",
+       "line": 36,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 37,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "ast.walk",
+       "line": 36
+      },
+      {
+       "name": "ast.parse",
+       "line": 36
+      },
+      {
+       "name": "read_text",
+       "line": 36
+      },
+      {
+       "name": "isinstance",
+       "line": 37
+      },
+      {
+       "name": "node.name.startswith",
+       "line": 37
+      }
+     ]
+    },
+    {
+     "name": "check",
+     "qualname": "check",
+     "kind": "function",
+     "start": 42,
+     "end": 78,
+     "size": 37,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "if",
+       "line": 45,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 47,
+       "detail": ""
+      },
+      {
+       "kind": "elif",
+       "line": 51,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 53,
+       "detail": ""
+      },
+      {
+       "kind": "loop",
+       "line": 55,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 57,
+       "detail": ""
+      },
+      {
+       "kind": "elif",
+       "line": 59,
+       "detail": ""
+      },
+      {
+       "kind": "elif",
+       "line": 61,
+       "detail": ""
+      },
+      {
+       "kind": "elif",
+       "line": 63,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 64,
+       "detail": ""
+      },
+      {
+       "kind": "ternary",
+       "line": 69,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 71,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 76,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "read",
+       "line": 46
+      },
+      {
+       "name": "sorted",
+       "line": 66
+      },
+      {
+       "name": "count_tests",
+       "line": 70
+      },
+      {
+       "name": "subprocess.run",
+       "line": 73
+      },
+      {
+       "name": "errors.append",
+       "line": 58
+      },
+      {
+       "name": "any",
+       "line": 59
+      },
+      {
+       "name": "risks.splitlines",
+       "line": 56
+      },
+      {
+       "name": "().as_posix",
+       "line": 66
+      },
+      {
+       "name": "glob",
+       "line": 67
+      },
+      {
+       "name": "p.relative_to",
+       "line": 66
+      }
+     ]
+    },
+    {
+     "name": "main",
+     "qualname": "main",
+     "kind": "function",
+     "start": 81,
+     "end": 113,
+     "size": 33,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "if",
+       "line": 87,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 91,
+       "detail": ""
+      },
+      {
+       "kind": "ternary",
+       "line": 96,
+       "detail": ""
+      },
+      {
+       "kind": "except",
+       "line": 97,
+       "detail": "json.JSONDecodeError"
+      },
+      {
+       "kind": "if",
+       "line": 99,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 102,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 105,
+       "detail": ""
+      },
+      {
+       "kind": "elif",
+       "line": 107,
+       "detail": ""
+      },
+      {
+       "kind": "loop",
+       "line": 109,
+       "detail": ""
+      },
+      {
+       "kind": "ternary",
+       "line": 111,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "argparse.ArgumentParser",
+       "line": 82
+      },
+      {
+       "name": "ap.add_argument",
+       "line": 83
+      },
+      {
+       "name": "ap.parse_args",
+       "line": 85
+      },
+      {
+       "name": "json.loads",
+       "line": 86
+      },
+      {
+       "name": "read_text",
+       "line": 86
+      },
+      {
+       "name": "fail",
+       "line": 88
+      },
+      {
+       "name": "read",
+       "line": 94
+      },
+      {
+       "name": "status.get",
+       "line": 101
+      },
+      {
+       "name": "isinstance",
+       "line": 99
+      },
+      {
+       "name": "errors.append",
+       "line": 106
+      },
+      {
+       "name": "check",
+       "line": 110
+      },
+      {
+       "name": "print",
+       "line": 111
+      }
+     ]
+    },
+    {
+     "name": "(imports)",
+     "qualname": "(imports)",
+     "kind": "imports",
+     "start": 0,
+     "end": 0,
+     "size": 0,
+     "decorators": [],
+     "imports": [
+      {
+       "module": "argparse",
+       "name": null,
+       "as": "argparse",
+       "line": 13
+      },
+      {
+       "module": "ast",
+       "name": null,
+       "as": "ast",
+       "line": 14
+      },
+      {
+       "module": "json",
+       "name": null,
+       "as": "json",
+       "line": 15
+      },
+      {
+       "module": "pathlib",
+       "name": null,
+       "as": "pathlib",
+       "line": 16
+      },
+      {
+       "module": "subprocess",
+       "name": null,
+       "as": "subprocess",
+       "line": 17
+      },
+      {
+       "module": "sys",
+       "name": null,
+       "as": "sys",
+       "line": 18
+      }
+     ]
+    }
+   ],
+   "routes": []
+  },
+  {
+   "path": "tools/plan.py",
+   "kind": "source",
+   "lang": "python",
+   "binary": false,
+   "lines": 62,
+   "symbols": [
+    {
+     "name": "scan",
+     "qualname": "scan",
+     "kind": "function",
+     "start": 21,
+     "end": 38,
+     "size": 18,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "loop",
+       "line": 23,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 24,
+       "detail": ""
+      },
+      {
+       "kind": "ternary",
+       "line": 27,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 29,
+       "detail": ""
+      },
+      {
+       "kind": "loop",
+       "line": 30,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 31,
+       "detail": ""
+      },
+      {
+       "kind": "loop",
+       "line": 33,
+       "detail": ""
+      },
+      {
+       "kind": "loop",
+       "line": 34,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "sorted",
+       "line": 23
+      },
+      {
+       "name": "component_dir.glob",
+       "line": 23
+      },
+      {
+       "name": "().as_posix",
+       "line": 26
+      },
+      {
+       "name": "append",
+       "line": 27
+      },
+      {
+       "name": "path.read_text",
+       "line": 28
+      },
+      {
+       "name": "path.name.startswith",
+       "line": 29
+      },
+      {
+       "name": "ast.walk",
+       "line": 30
+      },
+      {
+       "name": "enumerate",
+       "line": 33
+      },
+      {
+       "name": "path.relative_to",
+       "line": 26
+      },
+      {
+       "name": "ast.parse",
+       "line": 30
+      },
+      {
+       "name": "isinstance",
+       "line": 31
+      },
+      {
+       "name": "text.splitlines",
+       "line": 33
+      },
+      {
+       "name": "HTTP.finditer",
+       "line": 34
+      },
+      {
+       "name": "functions.append",
+       "line": 32
+      },
+      {
+       "name": "http_sites.append",
+       "line": 35
+      },
+      {
+       "name": "match.group",
+       "line": 35
+      },
+      {
+       "name": "count_tests",
+       "line": 36
+      }
+     ]
+    },
+    {
+     "name": "main",
+     "qualname": "main",
+     "kind": "function",
+     "start": 41,
+     "end": 58,
+     "size": 18,
+     "decorators": [],
+     "branches": [
+      {
+       "kind": "loop",
+       "line": 43,
+       "detail": ""
+      },
+      {
+       "kind": "if",
+       "line": 44,
+       "detail": ""
+      }
+     ],
+     "calls": [
+      {
+       "name": "sorted",
+       "line": 43
+      },
+      {
+       "name": "iterdir",
+       "line": 43
+      },
+      {
+       "name": "d.is_dir",
+       "line": 44
+      },
+      {
+       "name": "scan",
+       "line": 45
+      },
+      {
+       "name": "d.name.startswith",
+       "line": 44
+      },
+      {
+       "name": "out.parent.mkdir",
+       "line": 56
+      },
+      {
+       "name": "out.write_text",
+       "line": 57
+      },
+      {
+       "name": "json.dumps",
+       "line": 57
+      },
+      {
+       "name": "print",
+       "line": 58
+      },
+      {
+       "name": "out.relative_to",
+       "line": 58
+      },
+      {
+       "name": "len",
+       "line": 58
+      }
+     ]
+    },
+    {
+     "name": "(imports)",
+     "qualname": "(imports)",
+     "kind": "imports",
+     "start": 0,
+     "end": 0,
+     "size": 0,
+     "decorators": [],
+     "imports": [
+      {
+       "module": "ast",
+       "name": null,
+       "as": "ast",
+       "line": 8
+      },
+      {
+       "module": "json",
+       "name": null,
+       "as": "json",
+       "line": 9
+      },
+      {
+       "module": "pathlib",
+       "name": null,
+       "as": "pathlib",
+       "line": 10
+      },
+      {
+       "module": "re",
+       "name": null,
+       "as": "re",
+       "line": 11
+      },
+      {
+       "module": "sys",
+       "name": null,
+       "as": "sys",
+       "line": 12
+      },
+      {
+       "module": "gate",
+       "name": "count_tests",
+       "as": "count_tests",
+       "line": 15
+      }
+     ]
+    }
+   ],
+   "routes": []
+  }
+ ]
+}
